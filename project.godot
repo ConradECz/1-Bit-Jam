@@ -14,6 +14,12 @@ config/name="1 Bit Jam"
 run/main_scene="uid://3ljgxtbgealk"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
-[rendering]
+[autoload]
 
-textures/canvas_textures/default_texture_filter=0
+AudioPlayer="*res://audio/audio_player.gd"
+
+[file_customization]
+
+folder_colors={
+"res://audio/": "pink"
+}
