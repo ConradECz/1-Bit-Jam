@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://3ljgxtbgealk"]
+[gd_scene load_steps=11 format=4 uid="uid://3ljgxtbgealk"]
 
 [ext_resource type="PackedScene" uid="uid://drlkk37pnbf5b" path="res://Scenes/player.tscn" id="1_l756w"]
 [ext_resource type="Texture2D" uid="uid://bwi3xql8n560n" path="res://Art/Tiles, UI, and Screens/Background 1.png" id="2_6j5ir"]
 [ext_resource type="Texture2D" uid="uid://w7omsfa6o7t6" path="res://Art/Tiles, UI, and Screens/Some tiles.png" id="2_pu3va"]
 [ext_resource type="PackedScene" uid="uid://bb2m71na1808" path="res://Scenes/killzone.tscn" id="3_0e3vx"]
+[ext_resource type="PackedScene" uid="uid://0v4n8vo1syn1" path="res://Scenes/enemy_penguin.tscn" id="5_mgc0q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
 texture = ExtResource("2_pu3va")
@@ -53,6 +54,7 @@ tile_set = SubResource("TileSet_bb2iq")
 
 [node name="Player" parent="." instance=ExtResource("1_l756w")]
 position = Vector2(39, 51)
+collision_layer = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(215, 42)
@@ -66,5 +68,8 @@ collision_mask = 1
 position = Vector2(-9, 1)
 scale = Vector2(4.2799997, 1)
 shape = SubResource("WorldBoundaryShape2D_6j5ir")
+
+[node name="Enemy Penguin" parent="." instance=ExtResource("5_mgc0q")]
+position = Vector2(122, 85)
 
 [connection signal="body_entered" from="Killzone" to="Player" method="_on_killzone_body_entered"]
