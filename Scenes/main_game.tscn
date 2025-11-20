@@ -42,7 +42,7 @@ sources/0 = SubResource("TileSetAtlasSource_mgc0q")
 [node name="Level Design" type="TileMapLayer" parent="."]
 use_parent_material = true
 position = Vector2(0, 28)
-tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAAEAAQAAgABAAEAAAAGAAQAAgABAAEAAAAIAAQAAgABAAEAAAAKAAQAAgABAAEAAAAPAAUAAgAEAAEAAAARAAUAAgAEAAEAAAATAAUAAgAEAAEAAAAVAAUAAgAEAAEAAAAXAAUAAgAEAAEAAAAUAAAAAgAHAAEAAAAWAAAAAgAHAAEAAAAYAAAAAgAHAAEAAAA=")
+tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAAEAAQAAgABAAEAAAAGAAQAAgABAAEAAAAIAAQAAgABAAEAAAAKAAQAAgABAAEAAAAPAAUAAgAEAAEAAAARAAUAAgAEAAEAAAATAAUAAgAEAAEAAAAVAAUAAgAEAAEAAAAXAAUAAgAEAAEAAAAUAAAAAgAHAAEAAAAWAAAAAgAHAAEAAAAYAAAAAgAHAAEAAAAPAAIAAgABAAEAAAAXAAIAAgABAAEAAAAHAAIAAgABAAEAAAA=")
 tile_set = SubResource("TileSet_6j5ir")
 
 [node name="Background Layer" type="TileMapLayer" parent="."]
@@ -70,6 +70,6 @@ scale = Vector2(4.2799997, 1)
 shape = SubResource("WorldBoundaryShape2D_6j5ir")
 
 [node name="Enemy Penguin" parent="." instance=ExtResource("5_mgc0q")]
-position = Vector2(122, 85)
+position = Vector2(304, 85)
 
 [connection signal="body_entered" from="Killzone" to="Player" method="_on_killzone_body_entered"]
