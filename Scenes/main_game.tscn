@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://3ljgxtbgealk"]
+[gd_scene load_steps=11 format=4 uid="uid://3ljgxtbgealk"]
 
 [ext_resource type="PackedScene" uid="uid://drlkk37pnbf5b" path="res://Scenes/player.tscn" id="1_l756w"]
+[ext_resource type="Texture2D" uid="uid://bwi3xql8n560n" path="res://Art/Tiles, UI, and Screens/Background 1.png" id="2_6j5ir"]
 [ext_resource type="Texture2D" uid="uid://w7omsfa6o7t6" path="res://Art/Tiles, UI, and Screens/Some tiles.png" id="2_pu3va"]
+[ext_resource type="PackedScene" uid="uid://bb2m71na1808" path="res://Scenes/killzone.tscn" id="3_0e3vx"]
+[ext_resource type="PackedScene" uid="uid://0v4n8vo1syn1" path="res://Scenes/enemy_penguin.tscn" id="5_mgc0q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
 texture = ExtResource("2_pu3va")
@@ -19,16 +22,54 @@ texture = ExtResource("2_pu3va")
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_0e3vx")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgc0q"]
+texture = ExtResource("2_6j5ir")
+0:4/size_in_atlas = Vector2i(6, 5)
+0:4/0 = 0
+6:6/size_in_atlas = Vector2i(7, 4)
+6:6/0 = 0
+0:0/size_in_atlas = Vector2i(14, 3)
+0:0/0 = 0
+0:10/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bb2iq"]
+sources/0 = SubResource("TileSetAtlasSource_mgc0q")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6j5ir"]
+
 [node name="Main Game" type="Node2D"]
 
 [node name="Level Design" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAAEAAQAAgABAAEAAAAGAAQAAgABAAEAAAAIAAQAAgABAAEAAAAKAAQAAgABAAEAAAAPAAUAAgAEAAEAAAARAAUAAgAEAAEAAAATAAUAAgAEAAEAAAAVAAUAAgAEAAEAAAAXAAUAAgAEAAEAAAAUAAAAAgAHAAEAAAAWAAAAAgAHAAEAAAAYAAAAAgAHAAEAAAA=")
+position = Vector2(0, 28)
+tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAAEAAQAAgABAAEAAAAGAAQAAgABAAEAAAAIAAQAAgABAAEAAAAKAAQAAgABAAEAAAAPAAUAAgAEAAEAAAARAAUAAgAEAAEAAAATAAUAAgAEAAEAAAAVAAUAAgAEAAEAAAAXAAUAAgAEAAEAAAAUAAAAAgAHAAEAAAAWAAAAAgAHAAEAAAAYAAAAAgAHAAEAAAAHAAIAAgABAAEAAAA=")
 tile_set = SubResource("TileSet_6j5ir")
+
+[node name="Background Layer" type="TileMapLayer" parent="."]
+show_behind_parent = true
+position = Vector2(-283, -171)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAMAAUAAAAAAAQAAAASAAYAAAAGAAYAAAAJAAgAAAAAAAoAAAAJAAkAAAAAAAoAAAAJAAoAAAAAAAoAAAAKAAgAAAAAAAoAAAAKAAkAAAAAAAoAAAAKAAoAAAAAAAoAAAALAAgAAAAAAAoAAAALAAkAAAAAAAoAAAALAAoAAAAAAAoAAAAMAAgAAAAAAAoAAAAMAAkAAAAAAAoAAAAMAAoAAAAAAAoAAAANAAgAAAAAAAoAAAANAAkAAAAAAAoAAAANAAoAAAAAAAoAAAAOAAgAAAAAAAoAAAAOAAkAAAAAAAoAAAAOAAoAAAAAAAoAAAAPAAgAAAAAAAoAAAAPAAkAAAAAAAoAAAAPAAoAAAAAAAoAAAAQAAgAAAAAAAoAAAAQAAkAAAAAAAoAAAAQAAoAAAAAAAoAAAARAAgAAAAAAAoAAAARAAkAAAAAAAoAAAARAAoAAAAAAAoAAAASAAgAAAAAAAoAAAASAAkAAAAAAAoAAAASAAoAAAAAAAoAAAATAAgAAAAAAAoAAAATAAkAAAAAAAoAAAATAAoAAAAAAAoAAAAUAAgAAAAAAAoAAAAUAAkAAAAAAAoAAAAUAAoAAAAAAAoAAAAVAAgAAAAAAAoAAAAVAAkAAAAAAAoAAAAVAAoAAAAAAAoAAAAPAAMAAAAAAAoAAAAPAAQAAAAAAAoAAAAQAAMAAAAAAAoAAAAQAAQAAAAAAAoAAAARAAMAAAAAAAoAAAARAAQAAAAAAAoAAAASAAMAAAAAAAoAAAASAAQAAAAAAAoAAAATAAMAAAAAAAoAAAATAAQAAAAAAAoAAAAUAAMAAAAAAAoAAAAUAAQAAAAAAAoAAAAVAAMAAAAAAAoAAAAVAAQAAAAAAAoAAAA=")
+tile_set = SubResource("TileSet_bb2iq")
 
 [node name="Player" parent="." instance=ExtResource("1_l756w")]
 position = Vector2(39, 51)
+collision_layer = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(215, 42)
 zoom = Vector2(3, 3)
+
+[node name="Killzone" parent="." instance=ExtResource("3_0e3vx")]
+position = Vector2(214, 167)
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-9, 1)
+scale = Vector2(4.2799997, 1)
+shape = SubResource("WorldBoundaryShape2D_6j5ir")
+
+[node name="Enemy Penguin" parent="." instance=ExtResource("5_mgc0q")]
+position = Vector2(304, 85)
+
+[connection signal="body_entered" from="Killzone" to="Player" method="_on_killzone_body_entered"]
