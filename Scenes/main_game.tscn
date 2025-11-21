@@ -27,23 +27,23 @@ sources/2 = SubResource("TileSetAtlasSource_0e3vx")
 [node name="Main Game" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(212.49998, 23.000006)
-scale = Vector2(1.9776783, 1.4090909)
+position = Vector2(213.00005, 23)
+scale = Vector2(3.9553573, 2.8295455)
 texture = ExtResource("2_6j5ir")
 
 [node name="Level Design" type="TileMapLayer" parent="."]
 use_parent_material = true
-position = Vector2(0, 28)
-tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAAEAAQAAgABAAEAAAAGAAQAAgABAAEAAAAIAAQAAgABAAEAAAAKAAQAAgABAAEAAAAPAAUAAgAEAAEAAAARAAUAAgAEAAEAAAATAAUAAgAEAAEAAAAVAAUAAgAEAAEAAAAXAAUAAgAEAAEAAAAUAAAAAgAHAAEAAAAWAAAAAgAHAAEAAAAYAAAAAgAHAAEAAAAHAAIAAgABAAEAAAA=")
+position = Vector2(-254, 28)
+tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAAEAAQAAgABAAEAAAAGAAQAAgABAAEAAAAIAAQAAgABAAEAAAAKAAQAAgABAAEAAAAPAAUAAgAEAAEAAAARAAUAAgAEAAEAAAATAAUAAgAEAAEAAAAVAAUAAgAEAAEAAAAXAAUAAgAEAAEAAAAUAAAAAgAHAAEAAAAWAAAAAgAHAAEAAAAYAAAAAgAHAAEAAAAHAAIAAgABAAEAAAAcAAQAAgABAAEAAAAhAAQAAgABAAEAAAAlAAEAAgABAAEAAAAqAP//AgABAAEAAAAwAP//AgABAAEAAAAyAAAAAgAEAAEAAAA0AAAAAgAEAAEAAAA2AAAAAgAEAAEAAAAyAPv/AgAHAAEAAAA0APv/AgAHAAEAAAA2APv/AgAHAAEAAAA=")
 tile_set = SubResource("TileSet_6j5ir")
 
 [node name="Player" parent="." instance=ExtResource("1_l756w")]
-position = Vector2(39, 51)
+position = Vector2(-206, 65)
 collision_layer = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(213, 23)
-zoom = Vector2(2.6, 2.6)
+zoom = Vector2(1.3, 1.3)
 
 [node name="Killzone" parent="." instance=ExtResource("3_0e3vx")]
 position = Vector2(214, 167)
@@ -55,6 +55,6 @@ scale = Vector2(4.2799997, 1)
 shape = SubResource("WorldBoundaryShape2D_6j5ir")
 
 [node name="Enemy Penguin" parent="." instance=ExtResource("5_mgc0q")]
-position = Vector2(304, 85)
+position = Vector2(52, 85)
 
 [connection signal="body_entered" from="Killzone" to="Player" method="_on_killzone_body_entered"]
