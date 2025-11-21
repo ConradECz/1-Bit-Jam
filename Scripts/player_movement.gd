@@ -6,8 +6,13 @@ const JUMP_VELOCITY = -400
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite = $AnimatedSprite2D
-
+	
 func _physics_process(delta):
+	
+	# FOR THE MEANTIME UNTIL ATTACK IS FIXED
+	if Input.is_action_just_pressed("attack"):
+		animated_sprite.play("Attack")
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
@@ -25,13 +30,14 @@ func _physics_process(delta):
 		animated_sprite.flip_h = true
 		
 	# Animations for Player
-	if is_on_floor():
-		if direction == 0:
-			animated_sprite.play("Idle")
+	if not animated_sprite.get_animation() == "Attack" or animated_sprite.is_playing() == false: #FOR THE MEANTIME UNTIL ATTACK IS FIXED
+		if is_on_floor():
+			if direction == 0:
+				animated_sprite.play("Idle")
+			else:
+				animated_sprite.play("Run")
 		else:
-			animated_sprite.play("Run")
-	else:
-		animated_sprite.play("Jump")
+			animated_sprite.play("Jump")
 		
 	if direction:
 		velocity.x = direction * SPEED
