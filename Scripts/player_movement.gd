@@ -8,8 +8,27 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player_collision = $PlayerCollision
 
+
+var lives = 5
 var is_dead = false
-	
+
+func decrease_health():
+	lives -= 1
+	print(lives)
+	if(lives <= 0 and not is_dead):
+		is_dead = true
+		print ("Game Over!")
+		animated_sprite.play("Death")
+		animated_sprite.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
+		set_physics_process(false)
+	else:
+		pass
+		# Animation for taking damage
+		# Timer for reset
+		
+func _on_death_animation_finished():
+	get_tree().reload_current_scene()
+		
 func jump():
 	velocity.y = JUMP_VELOCITY
 	

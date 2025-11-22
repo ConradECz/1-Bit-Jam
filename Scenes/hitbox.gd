@@ -6,20 +6,7 @@ extends Area2D
 @onready var collision_shape2 = $"../Killzone/CollisionShape2D"
 @onready var animated_sprite = $".."
 
-var lives = 5
-var is_dead = false
-
-func decrease_health():
-	lives -= 1
-	print (lives)
-	if(lives == 0):
-		print ("Game Over!")
-		get_tree().reload_current_scene()
-
 func _on_body_entered(_body: Node2D) -> void:
-	
-	if is_dead:
-		return
 	
 	var y_delta = position.y - _body.position.y
 	
@@ -28,8 +15,6 @@ func _on_body_entered(_body: Node2D) -> void:
 	if (y_delta > -60):
 		
 		print("Destroyed Enemy!")
-		
-		is_dead = true
 		
 		if collision_shape1 and collision_shape2:
 			collision_shape1.set_deferred("disabled", true)
@@ -40,6 +25,4 @@ func _on_body_entered(_body: Node2D) -> void:
 		_body.jump()
 		await animated_sprite.animation_finished
 		get_parent().queue_free()
-	else:
-		player.decrease_health()
 		
