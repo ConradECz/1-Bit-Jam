@@ -10,6 +10,10 @@ var direction = 1
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 func _process(_delta):
+	
+	if is_queued_for_deletion():
+		return
+	
 	if ray_cast_right.is_colliding():
 		direction = -1
 	elif ray_cast_left.is_colliding():
@@ -19,7 +23,9 @@ func _process(_delta):
 
 	position.x += direction * SPEED * _delta
 	
-	if direction == 1:
-		animated_sprite_2d.scale.x = 1
-	elif direction == -1:
-		animated_sprite_2d.scale.x = -1
+	
+	if is_instance_valid(animated_sprite_2d):
+		if direction == 1:
+			animated_sprite_2d.scale.x = 1
+		elif direction == -1:
+			animated_sprite_2d.scale.x = -1

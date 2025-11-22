@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://0v4n8vo1syn1"]
+[gd_scene load_steps=12 format=3 uid="uid://0v4n8vo1syn1"]
 
 [ext_resource type="Script" uid="uid://dmfijxuhglbit" path="res://Scripts/enemy_penguin.gd" id="1_3dhal"]
 [ext_resource type="Texture2D" uid="uid://y2po0vfj8go6" path="res://Art/Penguin/Peng Walking.png" id="1_e0rqs"]
 [ext_resource type="PackedScene" uid="uid://bb2m71na1808" path="res://Scenes/killzone.tscn" id="2_3dhal"]
+[ext_resource type="Script" uid="uid://dad8r1n6qq6r5" path="res://Scenes/hitbox.gd" id="4_v8y5j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3dhal"]
 atlas = ExtResource("1_e0rqs")
@@ -40,6 +41,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dhal"]
+size = Vector2(26, 34)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m5ls"]
 size = Vector2(20, 26)
 
@@ -53,6 +57,16 @@ animation = &"Walking"
 autoplay = "Walking"
 frame = 3
 frame_progress = 0.103793256
+
+[node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 16)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_v8y5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
+position = Vector2(1, -17)
+shape = SubResource("RectangleShape2D_3dhal")
 
 [node name="Killzone" parent="AnimatedSprite2D" instance=ExtResource("2_3dhal")]
 collision_layer = 4
@@ -73,3 +87,5 @@ target_position = Vector2(10, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(1, -13)
 target_position = Vector2(-10, 0)
+
+[connection signal="body_entered" from="AnimatedSprite2D/Hitbox" to="AnimatedSprite2D/Hitbox" method="_on_body_entered"]
