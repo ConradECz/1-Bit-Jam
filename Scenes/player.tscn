@@ -229,10 +229,8 @@ script = ExtResource("1_cvnsp")
 clip_children = 2
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_fkybt")
-animation = &"Death"
+animation = &"Jump"
 autoplay = "Idle"
-frame = 5
-frame_progress = 1.0
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)

@@ -1,13 +1,20 @@
 extends Area2D
 
 
+@onready var player = $"."
 @onready var collision_shape1 = $CollisionShape2D
 @onready var collision_shape2 = $"../Killzone/CollisionShape2D"
 @onready var animated_sprite = $".."
-@onready var player_collision = $PlayerCollision
-@onready var player_sprite = $AnimatedSprite2D
 
+var lives = 5
 var is_dead = false
+
+func decrease_health():
+	lives -= 1
+	print (lives)
+	if(lives == 0):
+		print ("Game Over!")
+		get_tree().reload_current_scene()
 
 func _on_body_entered(_body: Node2D) -> void:
 	
@@ -33,7 +40,6 @@ func _on_body_entered(_body: Node2D) -> void:
 		_body.jump()
 		await animated_sprite.animation_finished
 		get_parent().queue_free()
-		
 	else:
-		print("Player take damage")
-		_body.queue_free()
+		player.decrease_health()
+		

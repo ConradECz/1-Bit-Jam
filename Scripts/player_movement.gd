@@ -6,6 +6,9 @@ const JUMP_VELOCITY = -400
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var player_collision = $PlayerCollision
+
+var is_dead = false
 	
 func jump():
 	velocity.y = JUMP_VELOCITY
