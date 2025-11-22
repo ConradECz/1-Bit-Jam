@@ -7,7 +7,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player_collision = $PlayerCollision
-
+@export var attack_sound: AudioStream
 
 var lives = 5
 var is_dead = false
@@ -15,9 +15,11 @@ var is_dead = false
 func decrease_health():
 	lives -= 1
 	print(lives)
+	
 	if(lives <= 0 and not is_dead):
 		is_dead = true
 		print ("Game Over!")
+		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
 		animated_sprite.play("Death")
 		animated_sprite.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
 		set_physics_process(false)
@@ -25,6 +27,7 @@ func decrease_health():
 		pass
 		# Animation for taking damage
 		# Timer for reset
+		AudioPlayer.play_sound("res://audio/sfx/jared_playerdamage1.wav")
 		
 func _on_death_animation_finished():
 	get_tree().reload_current_scene()
@@ -37,6 +40,7 @@ func _physics_process(delta):
 	# FOR THE MEANTIME UNTIL ATTACK IS FIXED
 	if Input.is_action_just_pressed("attack"):
 		animated_sprite.play("Attack")
+		AudioPlayer.play_stream(attack_sound)
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta

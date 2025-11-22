@@ -1,11 +1,19 @@
-[gd_scene load_steps=35 format=3 uid="uid://drlkk37pnbf5b"]
+[gd_scene load_steps=38 format=3 uid="uid://drlkk37pnbf5b"]
 
 [ext_resource type="Script" uid="uid://dkwolit20rn2t" path="res://Scripts/player_movement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://b88nbboicxqti" path="res://Art/Player/Player Idle.png" id="1_v0iea"]
+[ext_resource type="AudioStream" uid="uid://d27jm323gid8t" path="res://audio/sfx/jared_swing1.wav" id="2_8erm5"]
 [ext_resource type="Texture2D" uid="uid://dmc33r4ch8j48" path="res://Art/Player/Player Attack.png" id="2_fkybt"]
+[ext_resource type="AudioStream" uid="uid://dyhi7jk61qtjl" path="res://audio/sfx/jared_swing2.wav" id="3_f1ek2"]
 [ext_resource type="Texture2D" uid="uid://nje4ioqek8cp" path="res://Art/Player/Player Jump.png" id="3_vgqql"]
 [ext_resource type="Texture2D" uid="uid://q3vggr475sjr" path="res://Art/Player/Player Death.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://dxb0dvlg5ju8u" path="res://Art/Player/Player Running.png" id="4_fkybt"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tx1dd"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("2_8erm5")
+stream_1/stream = ExtResource("3_f1ek2")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_igrcy"]
 atlas = ExtResource("2_fkybt")
@@ -224,6 +232,7 @@ height = 22.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cvnsp")
+attack_sound = SubResource("AudioStreamRandomizer_tx1dd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 clip_children = 2
