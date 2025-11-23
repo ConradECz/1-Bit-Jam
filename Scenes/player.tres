@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=25 format=3 uid="uid://bs46rceymtbav"]
 
-[ext_resource type="Texture2D" uid="uid://c0vwvqnlur8t3" path="res://Art/Player/Player Attack.png" id="1_gdeh8"]
+[ext_resource type="Texture2D" uid="uid://dmc33r4ch8j48" path="res://Art/Player/Player Attack.png" id="1_gdeh8"]
 [ext_resource type="Texture2D" uid="uid://b88nbboicxqti" path="res://Art/Player/Player Idle.png" id="2_8frex"]
 [ext_resource type="Texture2D" uid="uid://nje4ioqek8cp" path="res://Art/Player/Player Jump.png" id="3_73c6o"]
 [ext_resource type="Texture2D" uid="uid://dxb0dvlg5ju8u" path="res://Art/Player/Player Running.png" id="4_51fuy"]

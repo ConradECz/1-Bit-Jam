@@ -9,10 +9,18 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player_collision = $PlayerCollision
 @export var attack_sound: AudioStream
+@export var hearts: Array[Node]
 
 var lives = 5
 var is_dead = false
 var start_position: Vector2
+
+func hearts_ui():
+	for h in range(len(hearts)):
+		if (h < lives):
+			hearts[h].show()
+		else:
+			hearts[h].hide()
 
 func _ready():
 	start_position = Vector2(-206, 65)
@@ -20,6 +28,8 @@ func _ready():
 func take_world_damage():
 	lives -= 1
 	print(lives)
+	
+	hearts_ui()
 	
 	if(lives <= 0 and not is_dead):
 		is_dead = true
@@ -40,6 +50,8 @@ func take_enemy_damage():
 	lives -= 1
 	print(lives)
 	
+	hearts_ui()
+	
 	if(lives <= 0 and not is_dead):
 		is_dead = true
 		print ("Game Over!")
@@ -59,6 +71,9 @@ func take_enemy_damage():
 func decrease_health():
 	lives -= 1
 	print(lives)
+	
+	hearts_ui()
+
 	
 	if(lives <= 0 and not is_dead):
 		is_dead = true

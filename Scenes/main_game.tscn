@@ -40,9 +40,10 @@ position = Vector2(-254, 28)
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAAEAAQAAgABAAEAAAAGAAQAAgABAAEAAAAIAAQAAgABAAEAAAAKAAQAAgABAAEAAAAPAAUAAgAEAAEAAAARAAUAAgAEAAEAAAATAAUAAgAEAAEAAAAVAAUAAgAEAAEAAAAXAAUAAgAEAAEAAAAUAAAAAgAHAAEAAAAWAAAAAgAHAAEAAAAYAAAAAgAHAAEAAAAHAAIAAgABAAEAAAAcAAQAAgABAAEAAAAhAAQAAgABAAEAAAAlAAEAAgABAAEAAAAqAP//AgABAAEAAAAwAP//AgABAAEAAAAyAAAAAgAEAAEAAAA0AAAAAgAEAAEAAAA2AAAAAgAEAAEAAAAyAPv/AgAHAAEAAAA0APv/AgAHAAEAAAA2APv/AgAHAAEAAAA=")
 tile_set = SubResource("TileSet_6j5ir")
 
-[node name="Player" parent="." instance=ExtResource("1_l756w")]
+[node name="Player" parent="." node_paths=PackedStringArray("hearts") instance=ExtResource("1_l756w")]
 position = Vector2(-206, 65)
 collision_layer = 5
+hearts = [NodePath("../Hearts/HBoxContainer/Heart"), NodePath("../Hearts/HBoxContainer/Heart2"), NodePath("../Hearts/HBoxContainer/Heart3"), NodePath("../Hearts/HBoxContainer/Heart4"), NodePath("../Hearts/HBoxContainer/Heart5")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(213, 23)
