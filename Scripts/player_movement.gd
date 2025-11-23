@@ -11,6 +11,49 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var lives = 5
 var is_dead = false
+var start_position: Vector2
+
+func _ready():
+	start_position = Vector2(-206, 65)
+
+func take_world_damage():
+	lives -= 1
+	print(lives)
+	
+	if(lives <= 0 and not is_dead):
+		is_dead = true
+		print ("Game Over!")
+		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
+		animated_sprite.play("Death")
+		if player_collision:
+			player_collision.set_deferred("disabled", true)
+		animated_sprite.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
+		set_physics_process(false)
+	else:
+		reset_to_start()
+		# Animation for taking damage
+		# Timer for reset
+		AudioPlayer.play_sound("res://audio/sfx/jared_playerdamage1.wav")
+
+func take_enemy_damage():
+	lives -= 1
+	print(lives)
+	
+	if(lives <= 0 and not is_dead):
+		is_dead = true
+		print ("Game Over!")
+		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
+		animated_sprite.play("Death")
+		if player_collision:
+			player_collision.set_deferred("disabled", true)
+		animated_sprite.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
+		set_physics_process(false)
+	else:
+		# Animation for taking damage
+		# Timer for reset
+		AudioPlayer.play_sound("res://audio/sfx/jared_playerdamage1.wav")
+
+
 
 func decrease_health():
 	lives -= 1
@@ -26,10 +69,15 @@ func decrease_health():
 		animated_sprite.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
 		set_physics_process(false)
 	else:
-		pass
+		reset_to_start()
 		# Animation for taking damage
 		# Timer for reset
 		AudioPlayer.play_sound("res://audio/sfx/jared_playerdamage1.wav")
+		
+func reset_to_start():
+	global_position = start_position
+	velocity = Vector2.ZERO
+		
 		
 func _on_death_animation_finished():
 	get_tree().reload_current_scene()
