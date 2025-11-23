@@ -95,7 +95,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack"):
 		if animated_sprite.get_animation() != "Attack" or not animated_sprite.is_playing():
 			animated_sprite.play("Attack")
-			animated_sprite.animation_finished.connect(play_attack_sound, CONNECT_ONE_SHOT)
+			#animated_sprite.animation_finished.connect(play_attack_sound, CONNECT_ONE_SHOT)
+			play_attack_sound()
 	
 	if not is_on_floor():
 		if !Input.is_action_pressed("jump") and velocity.y < 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://3ljgxtbgealk"]
+[gd_scene load_steps=12 format=4 uid="uid://3ljgxtbgealk"]
 
 [ext_resource type="PackedScene" uid="uid://drlkk37pnbf5b" path="res://Scenes/player.tscn" id="1_l756w"]
 [ext_resource type="Texture2D" uid="uid://bwi3xql8n560n" path="res://Art/Tiles, UI, and Screens/Background 1.png" id="2_6j5ir"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c20dbmfpt26ae" path="res://Scenes/world_collision.gd" id="4_mgc0q"]
 [ext_resource type="PackedScene" uid="uid://0v4n8vo1syn1" path="res://Scenes/enemy_penguin.tscn" id="5_mgc0q"]
 [ext_resource type="Texture2D" uid="uid://dxigi4xvopese" path="res://Art/Tiles, UI, and Screens/Heart.png" id="6_bb2iq"]
+[ext_resource type="AudioStream" uid="uid://ckeohfh3e7u2w" path="res://audio/music/Jared-Level-Theme.ogg" id="7_18r40"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
 texture = ExtResource("2_pu3va")
@@ -106,6 +107,11 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("6_bb2iq")
 expand_mode = 2
+
+[node name="Temp Music Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_18r40")
+autoplay = true
+bus = &"Music"
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]
