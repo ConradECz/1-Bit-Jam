@@ -11,7 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var attack_sound: AudioStream
 @export var hearts: Array[Node]
 
-var lives = 5
+var lives = 3
 var is_dead = false
 var start_position: Vector2
 
