@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://3ljgxtbgealk"]
+[gd_scene load_steps=11 format=4 uid="uid://3ljgxtbgealk"]
 
 [ext_resource type="PackedScene" uid="uid://drlkk37pnbf5b" path="res://Scenes/player.tscn" id="1_l756w"]
 [ext_resource type="Texture2D" uid="uid://bwi3xql8n560n" path="res://Art/Tiles, UI, and Screens/Background 1.png" id="2_6j5ir"]
 [ext_resource type="Texture2D" uid="uid://w7omsfa6o7t6" path="res://Art/Tiles, UI, and Screens/Some tiles.png" id="2_pu3va"]
 [ext_resource type="Script" uid="uid://c20dbmfpt26ae" path="res://Scenes/world_collision.gd" id="4_mgc0q"]
 [ext_resource type="PackedScene" uid="uid://0v4n8vo1syn1" path="res://Scenes/enemy_penguin.tscn" id="5_mgc0q"]
+[ext_resource type="Texture2D" uid="uid://dxigi4xvopese" path="res://Art/Tiles, UI, and Screens/Heart.png" id="6_bb2iq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
 texture = ExtResource("2_pu3va")
@@ -23,6 +24,8 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_0e3vx")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6j5ir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_18r40"]
 
 [node name="Main Game" type="Node2D"]
 
@@ -57,6 +60,52 @@ shape = SubResource("WorldBoundaryShape2D_6j5ir")
 
 [node name="Enemy Penguin" parent="." instance=ExtResource("5_mgc0q")]
 position = Vector2(52, 85)
+
+[node name="Hearts" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 437.0
+offset_top = -226.0
+offset_right = 653.0
+offset_bottom = -182.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_18r40")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hearts"]
+layout_mode = 0
+offset_right = 216.0
+offset_bottom = 40.0
+
+[node name="Heart" type="TextureRect" parent="Hearts/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_bb2iq")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="Hearts/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_bb2iq")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="Hearts/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_bb2iq")
+expand_mode = 2
+
+[node name="Heart4" type="TextureRect" parent="Hearts/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_bb2iq")
+expand_mode = 2
+
+[node name="Heart5" type="TextureRect" parent="Hearts/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_bb2iq")
+expand_mode = 2
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]
