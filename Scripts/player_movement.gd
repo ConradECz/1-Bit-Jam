@@ -32,6 +32,9 @@ func decrease_health():
 func _on_death_animation_finished():
 	get_tree().reload_current_scene()
 		
+func play_attack_sound():
+	AudioPlayer.play_stream(attack_sound)
+
 func jump():
 	velocity.y = JUMP_VELOCITY
 	
@@ -39,8 +42,9 @@ func _physics_process(delta):
 	
 	# FOR THE MEANTIME UNTIL ATTACK IS FIXED
 	if Input.is_action_just_pressed("attack"):
-		animated_sprite.play("Attack")
-		AudioPlayer.play_stream(attack_sound)
+		if animated_sprite.get_animation() != "Attack" or not animated_sprite.is_playing():
+			animated_sprite.play("Attack")
+			animated_sprite.animation_finished.connect(play_attack_sound, CONNECT_ONE_SHOT)
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
