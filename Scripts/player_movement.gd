@@ -10,6 +10,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var player_collision = $PlayerCollision
 @export var attack_sound: AudioStream
 @export var hearts: Array[Node]
+@export var ATTACK_OFFSET_PIXELS: float = 16.0
 
 var lives = 3
 var is_dead = false
@@ -141,7 +142,16 @@ func _physics_process(delta):
 				animated_sprite.play("Run")
 		else:
 			animated_sprite.play("Jump")
-		
+			
+	var target_offset_x = 0.0
+	if animated_sprite.get_animation() == "Attack":
+		if animated_sprite.flip_h:
+			target_offset_x = -ATTACK_OFFSET_PIXELS
+		else:
+			target_offset_x = ATTACK_OFFSET_PIXELS
+	
+	animated_sprite.offset.x = target_offset_x		
+	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
