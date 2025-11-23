@@ -5,6 +5,7 @@ extends Area2D
 @onready var collision_shape1 = $CollisionShape2D
 @onready var collision_shape2 = $"../Killzone/CollisionShape2D"
 @onready var animated_sprite = $".."
+@export var penguin_death: AudioStream
 
 func _on_body_entered(_body: Node2D) -> void:
 	
@@ -15,6 +16,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	if (y_delta > -60):
 		
 		print("Destroyed Enemy!")
+		AudioPlayer.play_stream(penguin_death)
 		
 		if collision_shape1 and collision_shape2:
 			collision_shape1.set_deferred("disabled", true)
