@@ -238,7 +238,7 @@ attack_sound = SubResource("AudioStreamRandomizer_tx1dd")
 clip_children = 2
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_fkybt")
-animation = &"Jump"
+animation = &"Run"
 autoplay = "Idle"
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
