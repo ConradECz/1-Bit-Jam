@@ -21,6 +21,8 @@ func decrease_health():
 		print ("Game Over!")
 		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
 		animated_sprite.play("Death")
+		if player_collision:
+			player_collision.set_deferred("disabled", true)
 		animated_sprite.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
 		set_physics_process(false)
 	else:
