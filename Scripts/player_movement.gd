@@ -6,13 +6,27 @@ const jump_gravity_multipler = 3.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@onready var enemy_sprite = $Enemy_sprite
+@onready var collision_shape1 = $AnimatedSprite2D/Hitbox/CollisionShape2D
+@onready var collision_shape2 = $AnimatedSprite2D/Killzone/CollisionShape2D
+@onready var player_damage = $PlayerDamageZone
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player_collision = $PlayerCollision
 @export var attack_sound: AudioStream
+@export var penguin_death: AudioStream
+@export var hearts: Array[Node]
+@export var ATTACK_OFFSET_PIXELS: float = 16.0
 
-var lives = 5
+var lives = 3
 var is_dead = false
 var start_position: Vector2
+
+func hearts_ui():
+	for h in range(len(hearts)):
+		if (h < lives):
+			hearts[h].show()
+		else:
+			hearts[h].hide()
 
 func _ready():
 	start_position = Vector2(-206, 65)
@@ -20,6 +34,8 @@ func _ready():
 func take_world_damage():
 	lives -= 1
 	print(lives)
+	
+	hearts_ui()
 	
 	if(lives <= 0 and not is_dead):
 		is_dead = true
@@ -40,6 +56,8 @@ func take_enemy_damage():
 	lives -= 1
 	print(lives)
 	
+	hearts_ui()
+	
 	if(lives <= 0 and not is_dead):
 		is_dead = true
 		print ("Game Over!")
@@ -59,6 +77,9 @@ func take_enemy_damage():
 func decrease_health():
 	lives -= 1
 	print(lives)
+	
+	hearts_ui()
+
 	
 	if(lives <= 0 and not is_dead):
 		is_dead = true
@@ -95,8 +116,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack"):
 		if animated_sprite.get_animation() != "Attack" or not animated_sprite.is_playing():
 			animated_sprite.play("Attack")
-			#animated_sprite.animation_finished.connect(play_attack_sound, CONNECT_ONE_SHOT)
-			play_attack_sound()
+			AudioPlayer.play_stream(attack_sound)
+			check_for_hits()
 	
 	if not is_on_floor():
 		if !Input.is_action_pressed("jump") and velocity.y < 0:
@@ -127,10 +148,28 @@ func _physics_process(delta):
 				animated_sprite.play("Run")
 		else:
 			animated_sprite.play("Jump")
-		
+			
+	var target_offset_x = 0.0
+	if animated_sprite.get_animation() == "Attack":
+		if animated_sprite.flip_h:
+			target_offset_x = -ATTACK_OFFSET_PIXELS
+		else:
+			target_offset_x = ATTACK_OFFSET_PIXELS
+	
+	animated_sprite.offset.x = target_offset_x		
+	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	move_and_slide()
+
+func check_for_hits():
+	var overlapping_areas = player_damage.get_overlapping_areas()
+	
+	for area in overlapping_areas:
+		if area.is_in_group("enemy"):
+			print("HIT!")			
+			if is_instance_valid(area) and area.has_method("die_from_player"):
+				area.die_from_player(self)

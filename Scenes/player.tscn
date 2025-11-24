@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://drlkk37pnbf5b"]
+[gd_scene load_steps=40 format=3 uid="uid://drlkk37pnbf5b"]
 
 [ext_resource type="Script" uid="uid://dkwolit20rn2t" path="res://Scripts/player_movement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://b88nbboicxqti" path="res://Art/Player/Player Idle.png" id="1_v0iea"]
@@ -230,6 +230,12 @@ animations = [{
 radius = 8.0
 height = 22.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8erm5"]
+size = Vector2(34, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ek2"]
+size = Vector2(34, 32)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cvnsp")
 attack_sound = SubResource("AudioStreamRandomizer_tx1dd")
@@ -238,9 +244,25 @@ attack_sound = SubResource("AudioStreamRandomizer_tx1dd")
 clip_children = 2
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_fkybt")
-animation = &"Jump"
+animation = &"Attack"
 autoplay = "Idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_x3wgy")
+
+[node name="PlayerDamageZone" type="Area2D" parent="." groups=["player"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDamageZone"]
+position = Vector2(32, -16)
+shape = SubResource("RectangleShape2D_8erm5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDamageZone"]
+position = Vector2(-32, -16)
+shape = SubResource("RectangleShape2D_f1ek2")
+
+[connection signal="area_entered" from="PlayerDamageZone" to="." method="_on_player_damage_zone_area_entered"]

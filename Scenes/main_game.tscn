@@ -1,12 +1,91 @@
-[gd_scene load_steps=12 format=4 uid="uid://3ljgxtbgealk"]
+[gd_scene load_steps=23 format=4 uid="uid://3ljgxtbgealk"]
 
 [ext_resource type="PackedScene" uid="uid://drlkk37pnbf5b" path="res://Scenes/player.tscn" id="1_l756w"]
 [ext_resource type="Texture2D" uid="uid://bwi3xql8n560n" path="res://Art/Tiles, UI, and Screens/Background 1.png" id="2_6j5ir"]
+[ext_resource type="Texture2D" uid="uid://cr63syxrwq2gw" path="res://Art/Tiles, UI, and Screens/Player face UI.png" id="2_18r40"]
 [ext_resource type="Texture2D" uid="uid://w7omsfa6o7t6" path="res://Art/Tiles, UI, and Screens/Some tiles.png" id="2_pu3va"]
 [ext_resource type="Script" uid="uid://c20dbmfpt26ae" path="res://Scenes/world_collision.gd" id="4_mgc0q"]
 [ext_resource type="PackedScene" uid="uid://0v4n8vo1syn1" path="res://Scenes/enemy_penguin.tscn" id="5_mgc0q"]
 [ext_resource type="Texture2D" uid="uid://dxigi4xvopese" path="res://Art/Tiles, UI, and Screens/Heart.png" id="6_bb2iq"]
 [ext_resource type="AudioStream" uid="uid://ckeohfh3e7u2w" path="res://audio/music/Jared-Level-Theme.ogg" id="7_18r40"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y7pd"]
+atlas = ExtResource("2_18r40")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73nn6"]
+atlas = ExtResource("2_18r40")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0mdn"]
+atlas = ExtResource("2_18r40")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xqxu"]
+atlas = ExtResource("2_18r40")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpqse"]
+atlas = ExtResource("2_18r40")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c78sm"]
+atlas = ExtResource("2_18r40")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i47ox"]
+atlas = ExtResource("2_18r40")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sftma"]
+atlas = ExtResource("2_18r40")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erobn"]
+atlas = ExtResource("2_18r40")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc13p"]
+atlas = ExtResource("2_18r40")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gpk8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y7pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73nn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0mdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xqxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpqse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c78sm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i47ox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sftma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erobn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc13p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
 texture = ExtResource("2_pu3va")
@@ -35,15 +114,22 @@ position = Vector2(213.00005, 23)
 scale = Vector2(3.9553573, 2.8295455)
 texture = ExtResource("2_6j5ir")
 
+[node name="Player UI" type="AnimatedSprite2D" parent="."]
+position = Vector2(-202, -193)
+sprite_frames = SubResource("SpriteFrames_gpk8t")
+autoplay = "default"
+frame_progress = 0.9495371
+
 [node name="Level Design" type="TileMapLayer" parent="."]
 use_parent_material = true
 position = Vector2(-254, 28)
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAAEAAQAAgABAAEAAAAGAAQAAgABAAEAAAAIAAQAAgABAAEAAAAKAAQAAgABAAEAAAAPAAUAAgAEAAEAAAARAAUAAgAEAAEAAAATAAUAAgAEAAEAAAAVAAUAAgAEAAEAAAAXAAUAAgAEAAEAAAAUAAAAAgAHAAEAAAAWAAAAAgAHAAEAAAAYAAAAAgAHAAEAAAAHAAIAAgABAAEAAAAcAAQAAgABAAEAAAAhAAQAAgABAAEAAAAlAAEAAgABAAEAAAAqAP//AgABAAEAAAAwAP//AgABAAEAAAAyAAAAAgAEAAEAAAA0AAAAAgAEAAEAAAA2AAAAAgAEAAEAAAAyAPv/AgAHAAEAAAA0APv/AgAHAAEAAAA2APv/AgAHAAEAAAA=")
 tile_set = SubResource("TileSet_6j5ir")
 
-[node name="Player" parent="." instance=ExtResource("1_l756w")]
+[node name="Player" parent="." node_paths=PackedStringArray("hearts") instance=ExtResource("1_l756w")]
 position = Vector2(-206, 65)
 collision_layer = 5
+hearts = [NodePath("../Hearts/HBoxContainer/Heart"), NodePath("../Hearts/HBoxContainer/Heart2"), NodePath("../Hearts/HBoxContainer/Heart3")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(213, 23)
@@ -66,17 +152,19 @@ position = Vector2(52, 85)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 437.0
-offset_top = -226.0
-offset_right = 653.0
-offset_bottom = -182.0
+offset_left = 450.0
+offset_top = -217.0
+offset_right = 666.0
+offset_bottom = -173.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_18r40")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Hearts"]
 layout_mode = 0
-offset_right = 216.0
-offset_bottom = 40.0
+offset_left = -632.0
+offset_top = 2.0
+offset_right = -502.0
+offset_bottom = 42.0
 
 [node name="Heart" type="TextureRect" parent="Hearts/HBoxContainer"]
 texture_filter = 1
@@ -95,23 +183,6 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("6_bb2iq")
 expand_mode = 2
-
-[node name="Heart4" type="TextureRect" parent="Hearts/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("6_bb2iq")
-expand_mode = 2
-
-[node name="Heart5" type="TextureRect" parent="Hearts/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("6_bb2iq")
-expand_mode = 2
-
-[node name="Temp Music Player" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_18r40")
-autoplay = true
-bus = &"Music"
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]
