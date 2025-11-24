@@ -6,7 +6,6 @@ const jump_gravity_multipler = 3.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
 @onready var enemy_sprite = $Enemy_sprite
 @onready var collision_shape1 = $AnimatedSprite2D/Hitbox/CollisionShape2D
 @onready var collision_shape2 = $AnimatedSprite2D/Killzone/CollisionShape2D
@@ -174,5 +173,3 @@ func check_for_hits():
 			print("HIT!")			
 			if is_instance_valid(area) and area.has_method("die_from_player"):
 				area.die_from_player(self)
-				
-			
