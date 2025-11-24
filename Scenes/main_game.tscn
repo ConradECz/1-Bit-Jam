@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c20dbmfpt26ae" path="res://Scenes/world_collision.gd" id="4_mgc0q"]
 [ext_resource type="PackedScene" uid="uid://0v4n8vo1syn1" path="res://Scenes/enemy_penguin.tscn" id="5_mgc0q"]
 [ext_resource type="Texture2D" uid="uid://dxigi4xvopese" path="res://Art/Tiles, UI, and Screens/Heart.png" id="6_bb2iq"]
+[ext_resource type="AudioStream" uid="uid://ckeohfh3e7u2w" path="res://audio/music/Jared-Level-Theme.ogg" id="7_18r40"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6y7pd"]
 atlas = ExtResource("2_18r40")
