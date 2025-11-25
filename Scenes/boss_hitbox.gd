@@ -82,6 +82,15 @@ func die_from_player(_body: Node2D) -> void:
 		AudioPlayer.play_stream(enemy_hit)
 		
 		if health > 0:
+			if collision_shape1 and collision_shape2:
+				collision_shape1.set_deferred("disabled", true)
+				collision_shape2.set_deferred("disabled", true)
+			animated_sprite.play("Flipping_off")
+			await animated_sprite.animation_finished
+			animated_sprite.play("Idle")
+			if collision_shape1 and collision_shape2:
+				collision_shape1.set_deferred("disabled", false)
+				collision_shape2.set_deferred("disabled", false)
 			teleport_to_random_location()
 	if health <= 0:	
 		print("Enemy killed by sword!")

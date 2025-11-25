@@ -151,7 +151,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Flipping_off",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -193,7 +193,7 @@ script = ExtResource("1_u0pqa")
 
 [node name="boss_sprite" type="AnimatedSprite2D" parent="." groups=["enemy", "enemy_hitbox"]]
 sprite_frames = SubResource("SpriteFrames_0rwbu")
-animation = &"Idle"
+animation = &"Flipping_off"
 autoplay = "Idle"
 
 [node name="Hitbox" type="Area2D" parent="boss_sprite" node_paths=PackedStringArray("timer_label") groups=["enemy", "enemy_hitbox"]]
