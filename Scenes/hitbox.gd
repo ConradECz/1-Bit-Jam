@@ -10,24 +10,8 @@ extends Area2D
 
 func _on_body_entered(_body: Node2D) -> void:
 	
-	var y_delta = position.y - _body.position.y
-	
-	print(y_delta)
-	
-	if (y_delta < -200):
-		
-		print("Destroyed Enemy!")
-		AudioPlayer.play_stream(penguin_death)
-		
-		if collision_shape1 and collision_shape2:
-			collision_shape1.set_deferred("disabled", true)
-			collision_shape2.set_deferred("disabled", true)
-			
-		animated_sprite.play("Peng_death")
-		
-		_body.jump()
-		await animated_sprite.animation_finished
-		get_parent().queue_free()
+	if not _body is CharacterBody2D:
+		return
 
 func die_from_player(_body: Node2D) -> void:
 	print("Enemy killed by sword!")
