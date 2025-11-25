@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://bmm7fubafdvs1"]
 
-[ext_resource type="Script" uid="uid://cu7ge2abs73q8" path="res://Scenes/world_1_1.gd" id="1_kt3ev"]
+[ext_resource type="Script" uid="uid://dql5p10hs10ol" path="res://Scenes/world_1_2.gd" id="1_kt3ev"]
 [ext_resource type="Texture2D" uid="uid://cr63syxrwq2gw" path="res://Art/Tiles, UI, and Screens/Player face UI.png" id="2_q4s3a"]
 
 [sub_resource type="Animation" id="Animation_3wl4v"]

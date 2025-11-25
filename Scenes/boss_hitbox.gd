@@ -94,6 +94,9 @@ func die_from_player(_body: Node2D) -> void:
 			teleport_to_random_location()
 	if health <= 0:	
 		print("Enemy killed by sword!")
+		
+		AudioPlayer.stop_all_music(0.5)
+		
 		AudioPlayer.play_stream(enemy_hit)
 		AudioPlayer.play_stream(penguin_death)
 
@@ -104,7 +107,9 @@ func die_from_player(_body: Node2D) -> void:
 	
 		animated_sprite.play("Death")
 		await animated_sprite.animation_finished
-
+		
+		get_tree().change_scene_to_file("res://Intro/main_menu.tscn")
+		
 		get_parent().queue_free()
 
 func teleport_to_random_location() -> void:
