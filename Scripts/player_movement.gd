@@ -27,11 +27,11 @@ func hearts_ui():
 			hearts[h].hide()
 
 func _ready():
-	start_position = Vector2(-206, 65)
+	start_position = Vector2(-364, 275)
 	levelmusic = AudioPlayer.play_music("res://audio/music/Jared-Level-Theme.ogg")
 
 func take_world_damage():
-	lives -= 1
+	lives -= 3
 	print(lives)
 	
 	hearts_ui()
@@ -39,9 +39,9 @@ func take_world_damage():
 	if(lives <= 0 and not is_dead):
 		is_dead = true
 		print ("Game Over!")
+		animated_sprite.play("Death")
 		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
 		AudioPlayer.stop_audio(levelmusic, 0.1)
-		animated_sprite.play("Death")
 		if player_collision:
 			player_collision.set_deferred("disabled", true)
 		animated_sprite.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
