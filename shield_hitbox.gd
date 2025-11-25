@@ -17,7 +17,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	
 	print(y_delta)
 	
-	if (y_delta < -150):
+	if (y_delta < -50):
 		
 		print("Destroyed Enemy!")
 		AudioPlayer.play_stream(penguin_death)

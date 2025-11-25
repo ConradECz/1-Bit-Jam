@@ -86,7 +86,7 @@ stream_1/stream = ExtResource("6_bq2e5")
 size = Vector2(19, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmpae"]
-size = Vector2(28, 27.5)
+size = Vector2(24, 27.5)
 
 [node name="normal_penguin" type="Node2D"]
 script = ExtResource("1_5vauy")
@@ -118,9 +118,9 @@ shape = SubResource("RectangleShape2D_nmpae")
 target_position = Vector2(0, 16)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
-target_position = Vector2(15, 0)
+target_position = Vector2(13, 0)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-13, 0)
+target_position = Vector2(-11, 0)
 
 [connection signal="body_entered" from="normal_sprite/Hitbox" to="normal_sprite/Hitbox" method="_on_body_entered"]
