@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://3ljgxtbgealk"]
+[gd_scene load_steps=24 format=4 uid="uid://3ljgxtbgealk"]
 
 [ext_resource type="PackedScene" uid="uid://drlkk37pnbf5b" path="res://Scenes/player.tscn" id="1_l756w"]
 [ext_resource type="Texture2D" uid="uid://bwi3xql8n560n" path="res://Art/Tiles, UI, and Screens/Background 1.png" id="2_6j5ir"]
@@ -7,6 +7,25 @@
 [ext_resource type="Script" uid="uid://c20dbmfpt26ae" path="res://Scenes/world_collision.gd" id="4_mgc0q"]
 [ext_resource type="PackedScene" uid="uid://0v4n8vo1syn1" path="res://Scenes/enemy_penguin.tscn" id="5_mgc0q"]
 [ext_resource type="Texture2D" uid="uid://dxigi4xvopese" path="res://Art/Tiles, UI, and Screens/Heart.png" id="6_bb2iq"]
+[ext_resource type="Script" uid="uid://ji26qjdqdywl" path="res://Scenes/canvas_layer.gd" id="7_6ll4n"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
+texture = ExtResource("2_pu3va")
+1:1/size_in_atlas = Vector2i(2, 2)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.948136, -16.02901, 15.980488, -15.964312, 16.077534, 15.964311, -16.012836, 15.99666)
+4:1/size_in_atlas = Vector2i(2, 4)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.012835, -32.13889, 16.012835, -31.977148, 16.077534, 32.074196, -16.045185, 32.009495)
+7:1/size_in_atlas = Vector2i(2, 1)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.046383, -7.994538, 15.874462, -7.937229, 15.9890785, 8.0518465, -16.103691, 7.93723)
+
+[sub_resource type="TileSet" id="TileSet_6j5ir"]
+physics_layer_0/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_0e3vx")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6j5ir"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6y7pd"]
 atlas = ExtResource("2_18r40")
@@ -86,24 +105,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
-texture = ExtResource("2_pu3va")
-1:1/size_in_atlas = Vector2i(2, 2)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.948136, -16.02901, 15.980488, -15.964312, 16.077534, 15.964311, -16.012836, 15.99666)
-4:1/size_in_atlas = Vector2i(2, 4)
-4:1/0 = 0
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.012835, -32.13889, 16.012835, -31.977148, 16.077534, 32.074196, -16.045185, 32.009495)
-7:1/size_in_atlas = Vector2i(2, 1)
-7:1/0 = 0
-7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.046383, -7.994538, 15.874462, -7.937229, 15.9890785, 8.0518465, -16.103691, 7.93723)
-
-[sub_resource type="TileSet" id="TileSet_6j5ir"]
-physics_layer_0/collision_layer = 1
-sources/2 = SubResource("TileSetAtlasSource_0e3vx")
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6j5ir"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_18r40"]
 
 [node name="Main Game" type="Node2D"]
@@ -112,12 +113,6 @@ sources/2 = SubResource("TileSetAtlasSource_0e3vx")
 position = Vector2(213.00005, 23)
 scale = Vector2(3.9553573, 2.8295455)
 texture = ExtResource("2_6j5ir")
-
-[node name="Player UI" type="AnimatedSprite2D" parent="."]
-position = Vector2(-202, -193)
-sprite_frames = SubResource("SpriteFrames_gpk8t")
-autoplay = "default"
-frame_progress = 0.9495371
 
 [node name="Level Design" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -128,10 +123,9 @@ tile_set = SubResource("TileSet_6j5ir")
 [node name="Player" parent="." node_paths=PackedStringArray("hearts") instance=ExtResource("1_l756w")]
 position = Vector2(-206, 65)
 collision_layer = 5
-hearts = [NodePath("../Hearts/HBoxContainer/Heart"), NodePath("../Hearts/HBoxContainer/Heart2"), NodePath("../Hearts/HBoxContainer/Heart3")]
+hearts = [NodePath("../CanvasLayer/Hearts/HBoxContainer/Heart3"), NodePath("../CanvasLayer/Hearts/HBoxContainer/Heart2"), NodePath("../CanvasLayer/Hearts/HBoxContainer/Heart")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(213, 23)
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.3, 1.3)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -147,37 +141,45 @@ shape = SubResource("WorldBoundaryShape2D_6j5ir")
 [node name="Enemy Penguin" parent="." instance=ExtResource("5_mgc0q")]
 position = Vector2(52, 85)
 
-[node name="Hearts" type="Panel" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 450.0
-offset_top = -217.0
-offset_right = 666.0
-offset_bottom = -173.0
-grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_18r40")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("7_6ll4n")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Hearts"]
-layout_mode = 0
-offset_left = -632.0
+[node name="Player UI" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(24, 24)
+sprite_frames = SubResource("SpriteFrames_gpk8t")
+autoplay = "default"
+frame_progress = 0.9495371
+
+[node name="Hearts" type="Panel" parent="CanvasLayer"]
+offset_left = 6.0
 offset_top = 2.0
-offset_right = -502.0
-offset_bottom = 42.0
+offset_right = 222.0
+offset_bottom = 46.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_18r40")
+metadata/_edit_use_anchors_ = true
 
-[node name="Heart" type="TextureRect" parent="Hearts/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Hearts"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18055555
+anchor_right = 0.18055555
+offset_right = 130.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer/Hearts/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("6_bb2iq")
 expand_mode = 2
 
-[node name="Heart2" type="TextureRect" parent="Hearts/HBoxContainer"]
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/Hearts/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("6_bb2iq")
 expand_mode = 2
 
-[node name="Heart3" type="TextureRect" parent="Hearts/HBoxContainer"]
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/Hearts/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("6_bb2iq")
