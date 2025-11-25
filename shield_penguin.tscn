@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://7jdt1a4qyj5i"]
+[gd_scene load_steps=23 format=3 uid="uid://7jdt1a4qyj5i"]
 
 [ext_resource type="Script" uid="uid://du3qw35yf0v6g" path="res://shield_penguin.gd" id="1_xb8oy"]
 [ext_resource type="Texture2D" uid="uid://dg1odddn3h1hj" path="res://Art/Penguin/Shield Penguin/Shield Peng Death.png" id="2_ts4nf"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bb2m71na1808" path="res://Scenes/killzone.tscn" id="5_ts4nf"]
 [ext_resource type="AudioStream" uid="uid://6m1b3pd51jjh" path="res://audio/sfx/jared_penguindeath1.wav" id="5_ylbqn"]
 [ext_resource type="AudioStream" uid="uid://b6r7v5rwuk3f4" path="res://audio/sfx/jared_penguindeath2.wav" id="6_a8r7j"]
+[ext_resource type="AudioStream" uid="uid://dymjjgunlddtg" path="res://audio/sfx/jared_shieldhit1.wav" id="7_a8r7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ecsno"]
 atlas = ExtResource("2_ts4nf")
@@ -84,6 +85,11 @@ stream_1/stream = ExtResource("6_a8r7j")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o7s8t"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_876at"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("7_a8r7j")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w38cs"]
 size = Vector2(18, 10)
 
@@ -104,6 +110,7 @@ collision_mask = 4
 script = ExtResource("4_ylbqn")
 penguin_death = SubResource("AudioStreamRandomizer_ecsno")
 attack_sound = SubResource("AudioStreamRandomizer_o7s8t")
+shield_hit = SubResource("AudioStreamRandomizer_876at")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_sprite/Hitbox" groups=["enemy", "enemy_hitbox"]]
 position = Vector2(1, -13)
