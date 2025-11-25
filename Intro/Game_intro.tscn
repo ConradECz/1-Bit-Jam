@@ -222,8 +222,8 @@ _data = {
 script = ExtResource("1_djerg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(576, 324.49997)
-scale = Vector2(5.2, 3.735)
+position = Vector2(583.3, 335.90997)
+scale = Vector2(5.2651777, 3.8646588)
 sprite_frames = SubResource("SpriteFrames_3jak3")
 animation = &"credits"
 frame = 1

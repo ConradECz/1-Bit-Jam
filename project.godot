@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="1 Bit Jam"
-run/main_scene="uid://cj3anl5dr4hhd"
+run/main_scene="uid://bs0ak6b5ghcdu"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]

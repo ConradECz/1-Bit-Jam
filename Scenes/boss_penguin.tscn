@@ -1,0 +1,217 @@
+[gd_scene load_steps=37 format=3 uid="uid://2widn3svohvk"]
+
+[ext_resource type="Texture2D" uid="uid://ds1pfqdt6ltrj" path="res://Art/Evil Boss Guy/Boss Death.png" id="1_lteo5"]
+[ext_resource type="Script" uid="uid://ci77u1kj2kp3b" path="res://Scenes/boss_penguin.gd" id="1_u0pqa"]
+[ext_resource type="Texture2D" uid="uid://xnter3y00rrs" path="res://Art/Evil Boss Guy/Boss Flipping player off.png" id="2_o45oj"]
+[ext_resource type="Texture2D" uid="uid://btv65p4m75gyh" path="res://Art/Evil Boss Guy/Boss Idle.png" id="3_u0pqa"]
+[ext_resource type="PackedScene" uid="uid://bb2m71na1808" path="res://Scenes/killzone.tscn" id="4_algjk"]
+[ext_resource type="Script" uid="uid://bwt38h1ndfhvo" path="res://Scenes/boss_hitbox.gd" id="5_algjk"]
+[ext_resource type="AudioStream" uid="uid://6m1b3pd51jjh" path="res://audio/sfx/jared_penguindeath1.wav" id="6_bguc5"]
+[ext_resource type="AudioStream" uid="uid://brs7v1x4gitdd" path="res://audio/sfx/jared_enemyhit1.wav" id="6_u1vts"]
+[ext_resource type="AudioStream" uid="uid://bpwhgtd3dxmyd" path="res://audio/sfx/jared_enemyhit2.wav" id="7_phc5i"]
+[ext_resource type="AudioStream" uid="uid://b6r7v5rwuk3f4" path="res://audio/sfx/jared_penguindeath2.wav" id="7_u1vts"]
+[ext_resource type="AudioStream" uid="uid://b0kibjlvny1f1" path="res://audio/sfx/jared_enemyhit3.wav" id="8_71ebj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bguc5"]
+atlas = ExtResource("1_lteo5")
+region = Rect2(0, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1vts"]
+atlas = ExtResource("1_lteo5")
+region = Rect2(32, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phc5i"]
+atlas = ExtResource("1_lteo5")
+region = Rect2(64, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71ebj"]
+atlas = ExtResource("1_lteo5")
+region = Rect2(96, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt1w1"]
+atlas = ExtResource("1_lteo5")
+region = Rect2(128, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yua3p"]
+atlas = ExtResource("1_lteo5")
+region = Rect2(160, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prx4g"]
+atlas = ExtResource("1_lteo5")
+region = Rect2(192, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2hxa"]
+atlas = ExtResource("1_lteo5")
+region = Rect2(224, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8klym"]
+atlas = ExtResource("1_lteo5")
+region = Rect2(256, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihvbs"]
+atlas = ExtResource("1_lteo5")
+region = Rect2(288, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj383"]
+atlas = ExtResource("2_o45oj")
+region = Rect2(0, 0, 48, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04vg1"]
+atlas = ExtResource("2_o45oj")
+region = Rect2(48, 0, 48, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqt2c"]
+atlas = ExtResource("2_o45oj")
+region = Rect2(96, 0, 48, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb33o"]
+atlas = ExtResource("2_o45oj")
+region = Rect2(144, 0, 48, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i56k"]
+atlas = ExtResource("2_o45oj")
+region = Rect2(192, 0, 48, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m13go"]
+atlas = ExtResource("2_o45oj")
+region = Rect2(240, 0, 48, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yugjj"]
+atlas = ExtResource("3_u0pqa")
+region = Rect2(0, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saaxl"]
+atlas = ExtResource("3_u0pqa")
+region = Rect2(32, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw24r"]
+atlas = ExtResource("3_u0pqa")
+region = Rect2(64, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cvye"]
+atlas = ExtResource("3_u0pqa")
+region = Rect2(96, 0, 32, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rwbu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bguc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1vts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phc5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71ebj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt1w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yua3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prx4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2hxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8klym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihvbs")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj383")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04vg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqt2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb33o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3i56k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m13go")
+}],
+"loop": false,
+"name": &"Flipping_off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yugjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_saaxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw24r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cvye")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tt1w1"]
+streams_count = 2
+stream_0/stream = ExtResource("6_bguc5")
+stream_1/stream = ExtResource("7_u1vts")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_71ebj"]
+streams_count = 3
+stream_0/stream = ExtResource("6_u1vts")
+stream_1/stream = ExtResource("7_phc5i")
+stream_2/stream = ExtResource("8_71ebj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvxqr"]
+size = Vector2(16, 10.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds0rm"]
+size = Vector2(26, 25)
+
+[node name="boss_penguin" type="Node2D"]
+script = ExtResource("1_u0pqa")
+
+[node name="boss_sprite" type="AnimatedSprite2D" parent="." groups=["enemy", "enemy_hitbox"]]
+sprite_frames = SubResource("SpriteFrames_0rwbu")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Hitbox" type="Area2D" parent="boss_sprite" groups=["enemy", "enemy_hitbox"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("5_algjk")
+penguin_death = SubResource("AudioStreamRandomizer_tt1w1")
+enemy_hit = SubResource("AudioStreamRandomizer_71ebj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boss_sprite/Hitbox" groups=["enemy", "enemy_hitbox"]]
+position = Vector2(2, -15)
+shape = SubResource("RectangleShape2D_lvxqr")
+
+[node name="Killzone" parent="boss_sprite" groups=["enemy", "enemy_hitbox"] instance=ExtResource("4_algjk")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boss_sprite/Killzone"]
+position = Vector2(-2, 2.5)
+shape = SubResource("RectangleShape2D_ds0rm")
+
+[connection signal="body_entered" from="boss_sprite/Hitbox" to="boss_sprite/Hitbox" method="_on_body_entered"]

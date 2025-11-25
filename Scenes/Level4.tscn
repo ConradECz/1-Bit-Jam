@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bs0ak6b5ghcdu"]
+[gd_scene load_steps=27 format=4 uid="uid://bs0ak6b5ghcdu"]
 
 [ext_resource type="Texture2D" uid="uid://bwi3xql8n560n" path="res://Art/Tiles, UI, and Screens/Background 1.png" id="1_rgu2x"]
 [ext_resource type="Texture2D" uid="uid://cr63syxrwq2gw" path="res://Art/Tiles, UI, and Screens/Player face UI.png" id="2_6lrky"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dxigi4xvopese" path="res://Art/Tiles, UI, and Screens/Heart.png" id="7_edi5u"]
 [ext_resource type="PackedScene" uid="uid://cjqwjb3xxte4e" path="res://Scenes/normal_penguin.tscn" id="7_qxjbv"]
 [ext_resource type="Script" uid="uid://ji26qjdqdywl" path="res://Scenes/canvas_layer.gd" id="8_iv3jq"]
+[ext_resource type="PackedScene" uid="uid://2widn3svohvk" path="res://Scenes/boss_penguin.tscn" id="11_qxjbv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
 texture = ExtResource("3_xgp81")
@@ -203,6 +204,9 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("7_edi5u")
 expand_mode = 2
+
+[node name="boss_penguin" parent="." instance=ExtResource("11_qxjbv")]
+position = Vector2(-292, 262)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]
