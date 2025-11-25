@@ -21,8 +21,10 @@ texture = ExtResource("2_pu3va")
 7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.046383, -7.994538, 15.874462, -7.937229, 15.9890785, 8.0518465, -16.103691, 7.93723)
 4:3/size_in_atlas = Vector2i(2, 2)
 4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.995984, -16.005114, 15.977723, -16.005114, 16.014244, 15.986854, -15.977723, 16.023375)
 4:1/size_in_atlas = Vector2i(2, 2)
 4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.012833, -15.996661, 16.041039, -16.091799, 16.045185, 16.06136, -16.012836, 15.964312)
 
 [sub_resource type="TileSet" id="TileSet_6j5ir"]
 physics_layer_0/collision_layer = 1
@@ -153,7 +155,10 @@ shape = SubResource("WorldBoundaryShape2D_6j5ir")
 position = Vector2(112, 438)
 
 [node name="shield_penguin" parent="." instance=ExtResource("6_kylad")]
-position = Vector2(34, 493)
+position = Vector2(-140, 213)
+
+[node name="normal_penguin" parent="." instance=ExtResource("10_bdlbp")]
+position = Vector2(-238, 261)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("7_6ll4n")
@@ -198,9 +203,6 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("6_bb2iq")
 expand_mode = 2
-
-[node name="normal_penguin" parent="." instance=ExtResource("10_bdlbp")]
-position = Vector2(-238, 261)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]
