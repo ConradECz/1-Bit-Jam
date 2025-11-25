@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 130.0
 const JUMP_VELOCITY = -400
 const jump_gravity_multipler = 3.0
 
@@ -17,6 +17,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var lives = 3
 var is_dead = false
 var start_position: Vector2
+var levelmusic
 
 func hearts_ui():
 	for h in range(len(hearts)):
@@ -27,6 +28,7 @@ func hearts_ui():
 
 func _ready():
 	start_position = Vector2(-206, 65)
+	levelmusic = AudioPlayer.play_music("res://audio/music/Jared-Level-Theme.ogg")
 
 func take_world_damage():
 	lives -= 1
@@ -38,6 +40,7 @@ func take_world_damage():
 		is_dead = true
 		print ("Game Over!")
 		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
+		AudioPlayer.stop_audio(levelmusic, 0.1)
 		animated_sprite.play("Death")
 		if player_collision:
 			player_collision.set_deferred("disabled", true)
