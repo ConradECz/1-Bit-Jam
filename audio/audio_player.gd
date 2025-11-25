@@ -79,3 +79,8 @@ func _create_default_sound_player_2d() -> AudioStreamPlayer2D:
 	audio_player.max_distance = 1200
 	audio_player.attenuation = 1.0
 	return audio_player
+
+func stop_all_music(fade_duration: float = 0.5):
+	for child in get_children():
+		if child is AudioStreamPlayer and child.get_meta("is_music", false):
+			stop_audio(child, fade_duration)

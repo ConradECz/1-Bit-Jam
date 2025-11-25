@@ -9,6 +9,7 @@ extends Area2D
 @export var attack_sound: AudioStream
 @export var enemy_hit: AudioStream
 @onready var game_timer = $"../../Timer"
+@export var timer_label: Label
 
 var health: int = 10
 var is_dead = false
@@ -24,8 +25,16 @@ const TARGET_SCENE_PATH = "res://Scenes/Level4.tscn"
 ]
 
 func _process(_delta):
-	if is_instance_valid(game_timer) and game_timer.is_stopped() == false:
+	if is_instance_valid(game_timer) and is_instance_valid(timer_label) and game_timer.is_stopped() == false:
 		var time_remaining = game_timer.time_left
+		
+		var minutes = floor(time_remaining / 60)
+		var seconds = fmod(time_remaining, 60)
+		
+		var time_string = "%02d:%02d" % [minutes, seconds]
+		
+		timer_label.text = "TIME LEFT: " + time_string
+		
 		print("Time Remaining: ", "%1.0f" % time_remaining)
 
 func _ready():
@@ -45,6 +54,10 @@ func _ready():
 		
 func _on_game_timer_timeout():
 	print("TIME'S UP, LEVEL RESET")
+	
+	AudioPlayer.stop_all_music(0.5)
+	
+	await get_tree().create_timer(0.6).timeout
 	
 	get_tree().reload_current_scene()
 

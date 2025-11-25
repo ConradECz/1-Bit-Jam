@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://2widn3svohvk"]
+[gd_scene load_steps=38 format=3 uid="uid://2widn3svohvk"]
 
 [ext_resource type="Texture2D" uid="uid://ds1pfqdt6ltrj" path="res://Art/Evil Boss Guy/Boss Death.png" id="1_lteo5"]
 [ext_resource type="Script" uid="uid://ci77u1kj2kp3b" path="res://Scenes/boss_penguin.gd" id="1_u0pqa"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bpwhgtd3dxmyd" path="res://audio/sfx/jared_enemyhit2.wav" id="7_phc5i"]
 [ext_resource type="AudioStream" uid="uid://b6r7v5rwuk3f4" path="res://audio/sfx/jared_penguindeath2.wav" id="7_u1vts"]
 [ext_resource type="AudioStream" uid="uid://b0kibjlvny1f1" path="res://audio/sfx/jared_enemyhit3.wav" id="8_71ebj"]
+[ext_resource type="Script" uid="uid://r2c3svrtsqtb" path="res://Scenes/boss_canvas_layer.gd" id="12_tt1w1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bguc5"]
 atlas = ExtResource("1_lteo5")
@@ -195,12 +196,13 @@ sprite_frames = SubResource("SpriteFrames_0rwbu")
 animation = &"Idle"
 autoplay = "Idle"
 
-[node name="Hitbox" type="Area2D" parent="boss_sprite" groups=["enemy", "enemy_hitbox"]]
+[node name="Hitbox" type="Area2D" parent="boss_sprite" node_paths=PackedStringArray("timer_label") groups=["enemy", "enemy_hitbox"]]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("5_algjk")
 penguin_death = SubResource("AudioStreamRandomizer_tt1w1")
 enemy_hit = SubResource("AudioStreamRandomizer_71ebj")
+timer_label = NodePath("../../CanvasLayer/Label")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boss_sprite/Hitbox" groups=["enemy", "enemy_hitbox"]]
 position = Vector2(-0.5, -15.875)
@@ -218,5 +220,18 @@ shape = SubResource("RectangleShape2D_ds0rm")
 wait_time = 40.0
 one_shot = true
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("12_tt1w1")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.0
+offset_top = 5.0
+offset_right = -12.0
+offset_bottom = 28.0
+grow_horizontal = 0
 
 [connection signal="body_entered" from="boss_sprite/Hitbox" to="boss_sprite/Hitbox" method="_on_body_entered"]
