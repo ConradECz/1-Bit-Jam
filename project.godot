@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="1 Bit Jam"
-run/main_scene="uid://3ljgxtbgealk"
+run/main_scene="uid://cj3anl5dr4hhd"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
 AudioPlayer="*res://audio/audio_player.gd"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="viewport"
 
 [file_customization]
 
