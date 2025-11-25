@@ -14,6 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var hearts: Array[Node]
 @export var ATTACK_OFFSET_PIXELS: float = 16.0
 
+
 const TARGET_SCENE_PATH = "res://Scenes/Level4.tscn"
 const LEVEL4_MUSIC_PATH = "res://audio/music/jablue.ogg"
 const DEFAULT_MUSIC_PATH = "res://audio/music/Jared-Level-Theme.ogg"
@@ -59,8 +60,8 @@ func take_world_damage():
 		print ("Game Over!")
 		animated_sprite.play("Death")
 		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
-		#AudioPlayer.stop_audio(levelmusic, 0.1)
-		AudioServer.set_bus_mute(1, true)
+		AudioPlayer.stop_audio(levelmusic, 0.1)
+		#AudioServer.set_bus_mute(1, true)
 		if player_collision:
 			player_collision.set_deferred("disabled", true)
 		animated_sprite.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
@@ -81,8 +82,8 @@ func take_enemy_damage():
 		is_dead = true
 		print ("Game Over!")
 		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
-		#AudioPlayer.stop_audio(levelmusic, 0.1)
-		AudioServer.set_bus_mute(1, 1)
+		AudioPlayer.stop_audio(levelmusic, 0.1)
+		#AudioServer.set_bus_mute(1, 1)
 		print ("muted")
 		animated_sprite.play("Death")
 		#AudioServer.set_bus_mute(1, 0)
@@ -128,7 +129,7 @@ func reset_to_start():
 		
 func _on_death_animation_finished():
 	get_tree().reload_current_scene()
-	AudioServer.set_bus_mute(1, 0)
+	#AudioServer.set_bus_mute(1, 0)
 		
 func play_attack_sound():
 	AudioPlayer.play_stream(attack_sound)
