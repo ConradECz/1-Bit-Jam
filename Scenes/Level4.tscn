@@ -206,7 +206,7 @@ texture = ExtResource("7_edi5u")
 expand_mode = 2
 
 [node name="boss_penguin" parent="." instance=ExtResource("11_qxjbv")]
-position = Vector2(-292, 262)
+position = Vector2(-707, 262)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]

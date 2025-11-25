@@ -182,7 +182,7 @@ stream_1/stream = ExtResource("7_phc5i")
 stream_2/stream = ExtResource("8_71ebj")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvxqr"]
-size = Vector2(16, 10.5)
+size = Vector2(23, 12.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds0rm"]
 size = Vector2(26, 25)
@@ -203,15 +203,20 @@ penguin_death = SubResource("AudioStreamRandomizer_tt1w1")
 enemy_hit = SubResource("AudioStreamRandomizer_71ebj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boss_sprite/Hitbox" groups=["enemy", "enemy_hitbox"]]
-position = Vector2(2, -15)
+position = Vector2(-0.5, -15.875)
 shape = SubResource("RectangleShape2D_lvxqr")
 
 [node name="Killzone" parent="boss_sprite" groups=["enemy", "enemy_hitbox"] instance=ExtResource("4_algjk")]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="boss_sprite/Killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boss_sprite/Killzone" groups=["enemy", "enemy_hitbox"]]
 position = Vector2(-2, 2.5)
 shape = SubResource("RectangleShape2D_ds0rm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 40.0
+one_shot = true
+autostart = true
 
 [connection signal="body_entered" from="boss_sprite/Hitbox" to="boss_sprite/Hitbox" method="_on_body_entered"]
