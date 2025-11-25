@@ -31,6 +31,7 @@ func hearts_ui():
 			hearts[h].hide()
 
 func _ready():
+	levelmusic = AudioPlayer.play_music(DEFAULT_MUSIC_PATH)
 	start_position = Vector2(-364, 275)
 	await get_tree().process_frame
 	
@@ -82,11 +83,9 @@ func take_enemy_damage():
 		print ("Game Over!")
 		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
 		#AudioPlayer.stop_audio(levelmusic, 0.1)
-		AudioServer.set_bus_mute(1, 1)
+		AudioServer.set_bus_mute(1, true)
 		print ("muted")
 		animated_sprite.play("Death")
-		#AudioServer.set_bus_mute(1, 0)
-		print ("unmuted")
 		if player_collision:
 			player_collision.set_deferred("disabled", true)
 		animated_sprite.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
@@ -109,6 +108,7 @@ func decrease_health():
 		is_dead = true
 		print ("Game Over!")
 		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
+		AudioServer.set_bus_mute(1, true)
 		animated_sprite.play("Death")
 		if player_collision:
 			player_collision.set_deferred("disabled", true)
@@ -127,8 +127,14 @@ func reset_to_start():
 		
 		
 func _on_death_animation_finished():
+	await get_tree().process_frame
+	var isplaying
 	get_tree().reload_current_scene()
-	AudioServer.set_bus_mute(1, 0)
+	AudioServer.set_bus_mute(0, false)
+	
+	levelmusic = AudioPlayer.play_music(DEFAULT_MUSIC_PATH)
+	isplaying = 1
+	
 		
 func play_attack_sound():
 	AudioPlayer.play_stream(attack_sound)
