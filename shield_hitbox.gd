@@ -10,6 +10,9 @@ extends Area2D
 
 func _on_body_entered(_body: Node2D) -> void:
 	
+	if not _body is CharacterBody2D:
+		return
+		
 	var y_delta = position.y - _body.position.y
 	
 	print(y_delta)
@@ -30,16 +33,5 @@ func _on_body_entered(_body: Node2D) -> void:
 		get_parent().queue_free()
 
 func die_from_player(_body: Node2D) -> void:
-	print("Enemy killed by sword!")
-	AudioPlayer.play_stream(attack_sound)
-	AudioPlayer.play_stream(penguin_death)
-
-
-	if collision_shape1 and collision_shape2:
-			collision_shape1.set_deferred("disabled", true)
-			collision_shape2.set_deferred("disabled", true)
-	
-	animated_sprite.play("Shield_death")
-	await animated_sprite.animation_finished
-
-	get_parent().queue_free()
+	print("Immune to swords!")
+	return
