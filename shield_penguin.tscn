@@ -1,0 +1,118 @@
+[gd_scene load_steps=17 format=3 uid="uid://7jdt1a4qyj5i"]
+
+[ext_resource type="Script" uid="uid://du3qw35yf0v6g" path="res://shield_penguin.gd" id="1_xb8oy"]
+[ext_resource type="Texture2D" uid="uid://dg1odddn3h1hj" path="res://Art/Penguin/Shield Penguin/Shield Peng Death.png" id="2_ts4nf"]
+[ext_resource type="Texture2D" uid="uid://doh5n4ct88f3m" path="res://Art/Penguin/Shield Penguin/Shield Peng Walking.png" id="3_5xhqx"]
+[ext_resource type="Script" uid="uid://bsko0oilaay7a" path="res://shield_hitbox.gd" id="4_ylbqn"]
+[ext_resource type="PackedScene" uid="uid://bb2m71na1808" path="res://Scenes/killzone.tscn" id="5_ts4nf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecsno"]
+atlas = ExtResource("2_ts4nf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7s8t"]
+atlas = ExtResource("2_ts4nf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_876at"]
+atlas = ExtResource("2_ts4nf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4xbp"]
+atlas = ExtResource("2_ts4nf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os76e"]
+atlas = ExtResource("3_5xhqx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vn2n"]
+atlas = ExtResource("3_5xhqx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivfnv"]
+atlas = ExtResource("3_5xhqx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtvi5"]
+atlas = ExtResource("3_5xhqx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xb8oy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecsno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7s8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_876at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4xbp")
+}],
+"loop": false,
+"name": &"Shield_death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os76e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vn2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivfnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtvi5")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w38cs"]
+size = Vector2(31, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xhqx"]
+size = Vector2(23, 24)
+
+[node name="shield_penguin" type="Node2D"]
+script = ExtResource("1_xb8oy")
+
+[node name="Shield_spirte" type="AnimatedSprite2D" parent="." groups=["enemy", "enemy_hitbox"]]
+sprite_frames = SubResource("SpriteFrames_xb8oy")
+animation = &"Shield_death"
+autoplay = "Walking"
+
+[node name="Hitbox" type="Area2D" parent="Shield_spirte" groups=["enemy", "enemy_hitbox"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_ylbqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_spirte/Hitbox" groups=["enemy", "enemy_hitbox"]]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_w38cs")
+
+[node name="Killzone" parent="Shield_spirte" groups=["enemy", "enemy_hitbox"] instance=ExtResource("5_ts4nf")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_spirte/Killzone" groups=["enemy", "enemy_hitbox"]]
+position = Vector2(0.5, 4)
+shape = SubResource("RectangleShape2D_5xhqx")
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 16)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(13, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-14, 0)
+
+[connection signal="body_entered" from="Shield_spirte/Hitbox" to="Shield_spirte/Hitbox" method="_on_body_entered"]

@@ -6,9 +6,6 @@ const jump_gravity_multipler = 3.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var enemy_sprite = $Enemy_sprite
-@onready var collision_shape1 = $AnimatedSprite2D/Hitbox/CollisionShape2D
-@onready var collision_shape2 = $AnimatedSprite2D/Killzone/CollisionShape2D
 @onready var player_damage = $PlayerDamageZone
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player_collision = $PlayerCollision

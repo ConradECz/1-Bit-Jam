@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://3ljgxtbgealk"]
+[gd_scene load_steps=25 format=4 uid="uid://3ljgxtbgealk"]
 
 [ext_resource type="PackedScene" uid="uid://drlkk37pnbf5b" path="res://Scenes/player.tscn" id="1_l756w"]
 [ext_resource type="Texture2D" uid="uid://bwi3xql8n560n" path="res://Art/Tiles, UI, and Screens/Background 1.png" id="2_6j5ir"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c20dbmfpt26ae" path="res://Scenes/world_collision.gd" id="4_mgc0q"]
 [ext_resource type="PackedScene" uid="uid://0v4n8vo1syn1" path="res://Scenes/enemy_penguin.tscn" id="5_mgc0q"]
 [ext_resource type="Texture2D" uid="uid://dxigi4xvopese" path="res://Art/Tiles, UI, and Screens/Heart.png" id="6_bb2iq"]
+[ext_resource type="PackedScene" uid="uid://7jdt1a4qyj5i" path="res://shield_penguin.tscn" id="6_kylad"]
 [ext_resource type="Script" uid="uid://ji26qjdqdywl" path="res://Scenes/canvas_layer.gd" id="7_6ll4n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
@@ -139,7 +140,10 @@ shape = SubResource("WorldBoundaryShape2D_6j5ir")
 [node name="Timer" type="Timer" parent="Area2D"]
 
 [node name="Enemy Penguin" parent="." instance=ExtResource("5_mgc0q")]
-position = Vector2(52, 85)
+position = Vector2(200, 85)
+
+[node name="shield_penguin" parent="." instance=ExtResource("6_kylad")]
+position = Vector2(34, 69)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("7_6ll4n")

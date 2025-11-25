@@ -236,7 +236,7 @@ size = Vector2(34, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ek2"]
 size = Vector2(34, 32)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_cvnsp")
 attack_sound = SubResource("AudioStreamRandomizer_tx1dd")
 
@@ -244,10 +244,8 @@ attack_sound = SubResource("AudioStreamRandomizer_tx1dd")
 clip_children = 2
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_fkybt")
-animation = &"Attack"
+animation = &"Jump"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
