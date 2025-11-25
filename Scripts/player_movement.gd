@@ -18,7 +18,7 @@ var lives = 3
 var is_dead = false
 var start_position: Vector2
 var levelmusic
-
+var isplaying
 func hearts_ui():
 	for h in range(len(hearts)):
 		if (h < lives):
@@ -29,6 +29,7 @@ func hearts_ui():
 func _ready():
 	start_position = Vector2(-364, 275)
 	levelmusic = AudioPlayer.play_music("res://audio/music/Jared-Level-Theme.ogg")
+	isplaying = 1
 
 func take_world_damage():
 	lives -= 3
