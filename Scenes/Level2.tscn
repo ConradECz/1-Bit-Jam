@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cjqwjb3xxte4e" path="res://Scenes/normal_penguin.tscn" id="7_au75x"]
 [ext_resource type="Script" uid="uid://ji26qjdqdywl" path="res://Scenes/canvas_layer.gd" id="8_62f1r"]
 [ext_resource type="PackedScene" uid="uid://bpig31kmxqfch" path="res://Scenes/finish.tscn" id="11_62f1r"]
-[ext_resource type="PackedScene" uid="uid://d1p12wsmt3dsk" path="res://Scenes/Level3.tscn" id="12_1je60"]
+[ext_resource type="PackedScene" uid="uid://krwbcl4gli7r" path="res://Scenes/world_1_3.tscn" id="12_62f1r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
 texture = ExtResource("3_70df5")
@@ -289,7 +289,7 @@ position = Vector2(2566, 197)
 
 [node name="Finish" parent="." instance=ExtResource("11_62f1r")]
 position = Vector2(3306, 197)
-next_level_scene = ExtResource("12_1je60")
+next_level_scene = ExtResource("12_62f1r")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]

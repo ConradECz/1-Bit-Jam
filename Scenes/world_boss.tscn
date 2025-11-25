@@ -1,0 +1,177 @@
+[gd_scene load_steps=18 format=3 uid="uid://xqnxnpop2bly"]
+
+[ext_resource type="Script" uid="uid://dj5ibaw0h7n3c" path="res://Scenes/world_1_boss.gd" id="1_vqcn8"]
+[ext_resource type="Texture2D" uid="uid://cr63syxrwq2gw" path="res://Art/Tiles, UI, and Screens/Player face UI.png" id="2_7le7k"]
+
+[sub_resource type="Animation" id="Animation_3wl4v"]
+resource_name = "Black_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.0090845),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_id3vg"]
+resource_name = "Black_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.0045422, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_son3t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_562yg"]
+_data = {
+&"Black_in": SubResource("Animation_3wl4v"),
+&"Black_out": SubResource("Animation_id3vg"),
+&"RESET": SubResource("Animation_son3t")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2emb"]
+atlas = ExtResource("2_7le7k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u4f7"]
+atlas = ExtResource("2_7le7k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfukj"]
+atlas = ExtResource("2_7le7k")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyp1c"]
+atlas = ExtResource("2_7le7k")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg1ne"]
+atlas = ExtResource("2_7le7k")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtdv8"]
+atlas = ExtResource("2_7le7k")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw7bd"]
+atlas = ExtResource("2_7le7k")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpf55"]
+atlas = ExtResource("2_7le7k")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2wp2"]
+atlas = ExtResource("2_7le7k")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2gf4"]
+atlas = ExtResource("2_7le7k")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0o644"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2emb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u4f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfukj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyp1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg1ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtdv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw7bd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpf55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2wp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2gf4")
+}],
+"loop": true,
+"name": &"UI",
+"speed": 5.0
+}]
+
+[node name="World 1-boss" type="Node2D"]
+script = ExtResource("1_vqcn8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -75.0
+offset_top = -76.0
+offset_right = 1303.0
+offset_bottom = 778.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_562yg")
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = -45.0
+offset_top = -47.0
+offset_right = 1217.0
+offset_bottom = 725.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect2"]
+position = Vector2(321, 368)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_0o644")
+animation = &"UI"
+autoplay = "UI"
+
+[node name="Label" type="Label" parent="ColorRect2"]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 298.0
+offset_right = 870.0
+offset_bottom = 435.0
+theme_override_font_sizes/font_size = 100
+text = "World 1-boss??"
+horizontal_alignment = 1
+vertical_alignment = 1
