@@ -7,7 +7,7 @@ extends Area2D
 @onready var animated_sprite = $".."
 @export var penguin_death: AudioStream
 @export var attack_sound: AudioStream
-
+@export var shield_hit: AudioStream
 func _on_body_entered(_body: Node2D) -> void:
 	
 	if not _body is CharacterBody2D:
@@ -17,7 +17,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	
 	print(y_delta)
 	
-	if (y_delta < -200):
+	if (y_delta < -150):
 		
 		print("Destroyed Enemy!")
 		AudioPlayer.play_stream(penguin_death)
@@ -34,4 +34,5 @@ func _on_body_entered(_body: Node2D) -> void:
 
 func die_from_player(_body: Node2D) -> void:
 	print("Immune to swords!")
+	AudioPlayer.play_stream(shield_hit, -5)
 	return
