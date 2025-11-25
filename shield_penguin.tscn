@@ -93,27 +93,27 @@ size = Vector2(23, 24)
 [node name="shield_penguin" type="Node2D"]
 script = ExtResource("1_xb8oy")
 
-[node name="Shield_spirte" type="AnimatedSprite2D" parent="." groups=["enemy", "enemy_hitbox"]]
+[node name="Shield_sprite" type="AnimatedSprite2D" parent="." groups=["enemy", "enemy_hitbox"]]
 sprite_frames = SubResource("SpriteFrames_xb8oy")
 animation = &"Shield_death"
 autoplay = "Walking"
 
-[node name="Hitbox" type="Area2D" parent="Shield_spirte" groups=["enemy", "enemy_hitbox"]]
+[node name="Hitbox" type="Area2D" parent="Shield_sprite" groups=["enemy", "enemy_hitbox"]]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_ylbqn")
 penguin_death = SubResource("AudioStreamRandomizer_ecsno")
 attack_sound = SubResource("AudioStreamRandomizer_o7s8t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_spirte/Hitbox" groups=["enemy", "enemy_hitbox"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_sprite/Hitbox" groups=["enemy", "enemy_hitbox"]]
 position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_w38cs")
 
-[node name="Killzone" parent="Shield_spirte" groups=["enemy", "enemy_hitbox"] instance=ExtResource("5_ts4nf")]
+[node name="Killzone" parent="Shield_sprite" groups=["enemy", "enemy_hitbox"] instance=ExtResource("5_ts4nf")]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_spirte/Killzone" groups=["enemy", "enemy_hitbox"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_sprite/Killzone" groups=["enemy", "enemy_hitbox"]]
 position = Vector2(0.5, 4)
 shape = SubResource("RectangleShape2D_5xhqx")
 
@@ -126,4 +126,4 @@ target_position = Vector2(13, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 target_position = Vector2(-14, 0)
 
-[connection signal="body_entered" from="Shield_spirte/Hitbox" to="Shield_spirte/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Shield_sprite/Hitbox" to="Shield_sprite/Hitbox" method="_on_body_entered"]

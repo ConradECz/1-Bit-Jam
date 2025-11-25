@@ -7,7 +7,7 @@ var direction = 1
 @onready var ray_cast_down = $RayCastDown 
 @onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_left = $RayCastLeft
-@onready var animated_sprite_2d = $Shield_sprite
+@onready var animated_sprite_2d = $normal_sprite
 
 func _process(_delta):
 	
