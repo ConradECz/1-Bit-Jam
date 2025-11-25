@@ -228,10 +228,10 @@ script = ExtResource("12_tt1w1")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -52.0
-offset_top = 5.0
-offset_right = -12.0
-offset_bottom = 28.0
+offset_left = -138.0
+offset_top = 19.0
+offset_right = -39.0
+offset_bottom = 63.0
 grow_horizontal = 0
 
 [connection signal="body_entered" from="boss_sprite/Hitbox" to="boss_sprite/Hitbox" method="_on_body_entered"]

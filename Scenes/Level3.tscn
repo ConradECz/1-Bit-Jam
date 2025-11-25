@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://d1p12wsmt3dsk"]
+[gd_scene load_steps=28 format=4 uid="uid://d1p12wsmt3dsk"]
 
 [ext_resource type="Texture2D" uid="uid://chuaagcm71ydw" path="res://Art/Tiles, UI, and Screens/Background 2.png" id="1_m7vvj"]
 [ext_resource type="Texture2D" uid="uid://cr63syxrwq2gw" path="res://Art/Tiles, UI, and Screens/Player face UI.png" id="2_cp0jt"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dxigi4xvopese" path="res://Art/Tiles, UI, and Screens/Heart.png" id="7_ffsx8"]
 [ext_resource type="PackedScene" uid="uid://cjqwjb3xxte4e" path="res://Scenes/normal_penguin.tscn" id="7_kg31f"]
 [ext_resource type="Script" uid="uid://ji26qjdqdywl" path="res://Scenes/canvas_layer.gd" id="8_ncjpd"]
+[ext_resource type="PackedScene" uid="uid://bpig31kmxqfch" path="res://Scenes/finish.tscn" id="11_ncjpd"]
+[ext_resource type="PackedScene" uid="uid://bs0ak6b5ghcdu" path="res://Scenes/Level4.tscn" id="12_ffsx8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3vx"]
 texture = ExtResource("3_p6pjf")
@@ -288,6 +290,10 @@ position = Vector2(3109, 213)
 
 [node name="Enemy Penguin13" parent="." instance=ExtResource("6_ncjpd")]
 position = Vector2(3194, 197)
+
+[node name="Finish" parent="." instance=ExtResource("11_ncjpd")]
+position = Vector2(3306, 149)
+next_level_scene = ExtResource("12_ffsx8")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]
