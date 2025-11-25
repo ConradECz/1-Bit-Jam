@@ -83,10 +83,13 @@ func take_enemy_damage():
 		is_dead = true
 		print ("Game Over!")
 		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
+<<<<<<< HEAD
 		#AudioPlayer.stop_audio(levelmusic, 0.1)
 		AudioServer.set_bus_mute(1, true)
+=======
 		AudioPlayer.stop_audio(levelmusic, 0.1)
 		#AudioServer.set_bus_mute(1, 1)
+>>>>>>> c3ff5aa5fa8d374425cda43272f1f456b7780f0b
 		print ("muted")
 		animated_sprite.play("Death")
 		if player_collision:
