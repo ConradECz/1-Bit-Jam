@@ -83,7 +83,7 @@ stream_0/stream = ExtResource("5_t7x84")
 stream_1/stream = ExtResource("6_x2evb")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dhal"]
-size = Vector2(26, 34)
+size = Vector2(26, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m5ls"]
 size = Vector2(20, 26)
@@ -105,7 +105,7 @@ script = ExtResource("4_v8y5j")
 penguin_death = SubResource("AudioStreamRandomizer_2m5ls")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_sprite/Hitbox"]
-position = Vector2(1, -17)
+position = Vector2(1, -17.5)
 shape = SubResource("RectangleShape2D_3dhal")
 
 [node name="Killzone" parent="Enemy_sprite" groups=["enemy", "enemy_hitbox"] instance=ExtResource("2_3dhal")]
