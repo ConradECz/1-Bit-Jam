@@ -1,0 +1,250 @@
+[gd_scene load_steps=29 format=3 uid="uid://ciayevj51i7e4"]
+
+[ext_resource type="Texture2D" uid="uid://cftiij1c8anbi" path="res://Art/Player/Player Running (1).png" id="1_cd03v"]
+[ext_resource type="Script" uid="uid://d078g647oeu4f" path="res://Scenes/tutorial_screen.gd" id="1_vscmb"]
+[ext_resource type="Texture2D" uid="uid://bmmlky7pms2m5" path="res://Art/Player/Player Jump (1).png" id="2_elo14"]
+[ext_resource type="Texture2D" uid="uid://d2kiybd75tbya" path="res://Art/Player/Attack 2 (1).png" id="3_vscmb"]
+[ext_resource type="Texture2D" uid="uid://7ofa3ssog788" path="res://Art/Tiles, UI, and Screens/Some UI.png" id="5_gf6pl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf6pl"]
+atlas = ExtResource("1_cd03v")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqd15"]
+atlas = ExtResource("1_cd03v")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0jvn"]
+atlas = ExtResource("1_cd03v")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knip7"]
+atlas = ExtResource("1_cd03v")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcwbk"]
+atlas = ExtResource("1_cd03v")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00ygr"]
+atlas = ExtResource("1_cd03v")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ei42"]
+atlas = ExtResource("1_cd03v")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gbr3"]
+atlas = ExtResource("1_cd03v")
+region = Rect2(448, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ygleh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf6pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqd15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0jvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knip7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcwbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00ygr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ei42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gbr3")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa8ty"]
+atlas = ExtResource("2_elo14")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk8e0"]
+atlas = ExtResource("2_elo14")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojst1"]
+atlas = ExtResource("2_elo14")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e84i"]
+atlas = ExtResource("2_elo14")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jxej"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_qa8ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk8e0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojst1")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_2e84i")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg78l"]
+atlas = ExtResource("3_vscmb")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdykl"]
+atlas = ExtResource("3_vscmb")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j07et"]
+atlas = ExtResource("3_vscmb")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0ntb"]
+atlas = ExtResource("3_vscmb")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02ohu"]
+atlas = ExtResource("3_vscmb")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk1q4"]
+atlas = ExtResource("3_vscmb")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1gxf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg78l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdykl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j07et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0ntb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02ohu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk1q4")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 8.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqd15"]
+texture = ExtResource("5_gf6pl")
+region_rect = Rect2(80, 16, 73, 26)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gf6pl"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="tutorial" type="Node2D"]
+script = ExtResource("1_vscmb")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_left = 557.0
+offset_top = 250.0
+offset_right = 597.0
+offset_bottom = 290.0
+alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer2"]
+position = Vector2(2, 3)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ygleh")
+animation = &"Run"
+autoplay = "Run"
+frame_progress = 0.64744395
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="VBoxContainer2"]
+position = Vector2(1, 158)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6jxej")
+animation = &"Jump"
+autoplay = "Jump"
+frame_progress = 0.1409577
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="VBoxContainer2"]
+position = Vector2(27.999989, 308)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_o1gxf")
+animation = &"Attack"
+autoplay = "Attack"
+frame_progress = 0.6867065
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = -33.0
+offset_top = -88.0
+offset_right = 1212.0
+offset_bottom = 776.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 1146.0
+offset_bottom = 460.0
+theme_override_constants/separation = 123
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "Welcome to Jared's Adventure! Before going in, here are some controls to remember:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "To run, press 'A' for the left direction, and 'D' for the right direction."
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "To jump, either press 'W', or the 'Spacebar'. Make sure to jump on enemies heads!"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "To attack, press the 'Left Mouse Button'."
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="."]
+offset_left = 912.0
+offset_top = 512.0
+offset_right = 1106.0
+offset_bottom = 612.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_nqd15")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gf6pl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_nqd15")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqd15")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_nqd15")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_nqd15")
+theme_override_styles/focus = SubResource("StyleBoxTexture_nqd15")
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
