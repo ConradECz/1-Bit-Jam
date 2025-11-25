@@ -11,6 +11,7 @@ var current_health: int = max_health
 @export var next_level_scene: PackedScene
 const JINGLE_MUSIC = "res://audio/music/Jared-Level-Clear.ogg"
 
+
 func _ready():
 	
 	animated_sprite.play("Damaged")
@@ -39,6 +40,7 @@ func _advance_damage_frame():
 		current_damage_frame += 1
 		animated_sprite.frame = current_damage_frame
 		print(name, " advanced to frame: ", current_damage_frame)
+		AudioPlayer.play_sound("res://audio/sfx/jared_enemyhit3.wav")
 	
 	
 	is_damaged = true
