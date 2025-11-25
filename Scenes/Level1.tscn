@@ -110,19 +110,23 @@ animations = [{
 
 [node name="Main Game" type="Node2D"]
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(213.00005, 23)
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -778.0
+offset_top = -182.99998
+offset_right = 240.87128
+offset_bottom = -6.9999847
 scale = Vector2(3.9553573, 2.8295455)
 texture = ExtResource("2_6j5ir")
+stretch_mode = 1
 
 [node name="Level Design" type="TileMapLayer" parent="."]
 use_parent_material = true
 position = Vector2(-254, 28)
-tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAAEAAQAAgABAAEAAAAGAAQAAgABAAEAAAAIAAQAAgABAAEAAAAKAAQAAgABAAEAAAAPAAUAAgAEAAEAAAARAAUAAgAEAAEAAAATAAUAAgAEAAEAAAAVAAUAAgAEAAEAAAAXAAUAAgAEAAEAAAAUAAAAAgAHAAEAAAAWAAAAAgAHAAEAAAAYAAAAAgAHAAEAAAAHAAIAAgABAAEAAAAcAAQAAgABAAEAAAAhAAQAAgABAAEAAAAlAAEAAgABAAEAAAAqAP//AgABAAEAAAAwAP//AgABAAEAAAAyAAAAAgAEAAEAAAA0AAAAAgAEAAEAAAA2AAAAAgAEAAEAAAAyAPv/AgAHAAEAAAA0APv/AgAHAAEAAAA2APv/AgAHAAEAAAA=")
+tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAAEAAQAAgABAAEAAAAGAAQAAgABAAEAAAAIAAQAAgABAAEAAAAKAAQAAgABAAEAAAAPAAUAAgAEAAEAAAARAAUAAgAEAAEAAAATAAUAAgAEAAEAAAAVAAUAAgAEAAEAAAAXAAUAAgAEAAEAAAAUAAAAAgAHAAEAAAAWAAAAAgAHAAEAAAAYAAAAAgAHAAEAAAAHAAIAAgABAAEAAAAcAAQAAgABAAEAAAAhAAQAAgABAAEAAAAlAAEAAgABAAEAAAAqAP//AgABAAEAAAAwAP//AgABAAEAAAAyAAAAAgAEAAEAAAA0AAAAAgAEAAEAAAA2AAAAAgAEAAEAAAAyAPv/AgAHAAEAAAA0APv/AgAHAAEAAAA2APv/AgAHAAEAAAAAAAQAAgABAAEAAAD//wQAAgABAAEAAAD+/wQAAgABAAEAAAD9/wQAAgABAAEAAAD8/wQAAgABAAEAAAD6/wQAAgABAAEAAAD5/wQAAgABAAEAAAD4/wQAAgABAAEAAAD3/wQAAgABAAEAAAD2/wQAAgABAAEAAAD1/wQAAgABAAEAAAD0/wQAAgABAAEAAADz/wQAAgABAAEAAADy/wQAAgABAAEAAADx/wQAAgABAAEAAADw/wQAAgABAAEAAAAFAAMAAgAEAAEAAAAGAAMAAgAEAAEAAAA=")
 tile_set = SubResource("TileSet_6j5ir")
 
 [node name="Player" parent="." node_paths=PackedStringArray("hearts") instance=ExtResource("1_l756w")]
-position = Vector2(-206, 65)
+position = Vector2(-364, 81)
 collision_layer = 5
 hearts = [NodePath("../CanvasLayer/Hearts/HBoxContainer/Heart3"), NodePath("../CanvasLayer/Hearts/HBoxContainer/Heart2"), NodePath("../CanvasLayer/Hearts/HBoxContainer/Heart")]
 
@@ -188,6 +192,9 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("6_bb2iq")
 expand_mode = 2
+
+[node name="Enemy Penguin2" parent="." instance=ExtResource("5_mgc0q")]
+position = Vector2(-88, 85)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]
