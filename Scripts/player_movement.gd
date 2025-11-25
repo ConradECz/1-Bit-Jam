@@ -62,6 +62,7 @@ func take_enemy_damage():
 		is_dead = true
 		print ("Game Over!")
 		AudioPlayer.play_sound("res://audio/sfx/jared_death1.wav")
+		AudioPlayer.stop_audio(levelmusic, 0.1)
 		animated_sprite.play("Death")
 		if player_collision:
 			player_collision.set_deferred("disabled", true)

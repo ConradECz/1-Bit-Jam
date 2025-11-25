@@ -152,13 +152,13 @@ shape = SubResource("WorldBoundaryShape2D_6j5ir")
 [node name="Timer" type="Timer" parent="Area2D"]
 
 [node name="Enemy Penguin" parent="." instance=ExtResource("5_mgc0q")]
-position = Vector2(112, 438)
+position = Vector2(-36, 278)
 
 [node name="shield_penguin" parent="." instance=ExtResource("6_kylad")]
-position = Vector2(-140, 213)
+position = Vector2(-211, 261)
 
 [node name="normal_penguin" parent="." instance=ExtResource("10_bdlbp")]
-position = Vector2(-238, 261)
+position = Vector2(-421, 261)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("7_6ll4n")

@@ -76,10 +76,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjrve"]
-size = Vector2(31, 34)
+size = Vector2(19, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmpae"]
-size = Vector2(20, 23)
+size = Vector2(28, 27.5)
 
 [node name="normal_penguin" type="Node2D"]
 script = ExtResource("1_5vauy")
@@ -95,7 +95,7 @@ collision_mask = 4
 script = ExtResource("4_bq2e5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="normal_sprite/Hitbox" groups=["enemy", "enemy_hitbox"]]
-position = Vector2(1.5, -1)
+position = Vector2(1.5, -16)
 shape = SubResource("RectangleShape2D_sjrve")
 
 [node name="Killzone" parent="normal_sprite" groups=["enemy", "enemy_hitbox"] instance=ExtResource("5_0d5o5")]
@@ -103,16 +103,16 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="normal_sprite/Killzone" groups=["enemy", "enemy_hitbox"]]
-position = Vector2(1, 4.5)
+position = Vector2(1, 2.25)
 shape = SubResource("RectangleShape2D_nmpae")
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
 target_position = Vector2(0, 16)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
-target_position = Vector2(11, 0)
+target_position = Vector2(15, 0)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-9, 0)
+target_position = Vector2(-13, 0)
 
 [connection signal="body_entered" from="normal_sprite/Hitbox" to="normal_sprite/Hitbox" method="_on_body_entered"]

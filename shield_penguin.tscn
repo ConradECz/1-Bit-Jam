@@ -85,10 +85,10 @@ stream_1/stream = ExtResource("6_a8r7j")
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o7s8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w38cs"]
-size = Vector2(31, 34)
+size = Vector2(18, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xhqx"]
-size = Vector2(23, 24)
+size = Vector2(25, 24)
 
 [node name="shield_penguin" type="Node2D"]
 script = ExtResource("1_xb8oy")
@@ -106,7 +106,7 @@ penguin_death = SubResource("AudioStreamRandomizer_ecsno")
 attack_sound = SubResource("AudioStreamRandomizer_o7s8t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_sprite/Hitbox" groups=["enemy", "enemy_hitbox"]]
-position = Vector2(0.5, -1)
+position = Vector2(1, -13)
 shape = SubResource("RectangleShape2D_w38cs")
 
 [node name="Killzone" parent="Shield_sprite" groups=["enemy", "enemy_hitbox"] instance=ExtResource("5_ts4nf")]
@@ -124,6 +124,6 @@ target_position = Vector2(0, 16)
 target_position = Vector2(13, 0)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-14, 0)
+target_position = Vector2(-12, 0)
 
 [connection signal="body_entered" from="Shield_sprite/Hitbox" to="Shield_sprite/Hitbox" method="_on_body_entered"]
