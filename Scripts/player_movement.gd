@@ -14,6 +14,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var hearts: Array[Node]
 @export var ATTACK_OFFSET_PIXELS: float = 16.0
 
+const TARGET_SCENE_PATH = "res://Scenes/Level4.tscn"
+const LEVEL4_MUSIC_PATH = "res://audio/music/jablue.ogg"
+const DEFAULT_MUSIC_PATH = "res://audio/music/Jared-Level-Theme.ogg"
+
 var lives = 3
 var is_dead = false
 var start_position: Vector2
@@ -28,7 +32,20 @@ func hearts_ui():
 
 func _ready():
 	start_position = Vector2(-364, 275)
-	levelmusic = AudioPlayer.play_music("res://audio/music/Jared-Level-Theme.ogg")
+	await get_tree().process_frame
+	
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	var music_to_play
+	
+	if current_scene_path == TARGET_SCENE_PATH:
+		print("Playing special Level 4 music.")
+		music_to_play = LEVEL4_MUSIC_PATH
+	else:
+		print("Playing default level music.")
+		music_to_play = DEFAULT_MUSIC_PATH
+		
+	# Start the determined music stream
+	levelmusic = AudioPlayer.play_music(music_to_play)
 	isplaying = 1
 
 func take_world_damage():
