@@ -16,12 +16,13 @@ texture = ExtResource("2_pu3va")
 1:1/size_in_atlas = Vector2i(2, 2)
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.948136, -16.02901, 15.980488, -15.964312, 16.077534, 15.964311, -16.012836, 15.99666)
-4:1/size_in_atlas = Vector2i(2, 4)
-4:1/0 = 0
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.012835, -32.13889, 16.012835, -31.977148, 16.077534, 32.074196, -16.045185, 32.009495)
 7:1/size_in_atlas = Vector2i(2, 1)
 7:1/0 = 0
 7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.046383, -7.994538, 15.874462, -7.937229, 15.9890785, 8.0518465, -16.103691, 7.93723)
+4:3/size_in_atlas = Vector2i(2, 2)
+4:3/0 = 0
+4:1/size_in_atlas = Vector2i(2, 2)
+4:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_6j5ir"]
 physics_layer_0/collision_layer = 1
